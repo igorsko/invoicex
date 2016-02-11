@@ -19,23 +19,18 @@ package gestioneFatture;
 
 import it.tnx.Db;
 import it.tnx.accessoUtenti.Permesso;
-import it.tnx.commons.CastUtils;
 import it.tnx.commons.SwingUtils;
 import it.tnx.commons.swing.DelayedExecutor;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.sql.Types;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import javax.swing.text.BadLocationException;
 
 public class frmVettori
         extends javax.swing.JInternalFrame {
@@ -567,30 +562,46 @@ public class frmVettori
     }//GEN-LAST:event_butUndoActionPerformed
 
     private void butSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butSaveActionPerformed
-        
+
         java.sql.Statement stat;
         ResultSet resu;
-        
+
         try {
             stat = Db.getConn().createStatement();
-            String sqlId = "SELECT * FROM `registrazione_prima_nota` WHERE id = "+texCodi.getText();
-            
+            String sqlId = "SELECT * FROM `registrazione_prima_nota` WHERE id = " + texCodi.getText();
+
             resu = stat.executeQuery(sqlId);
-        
+
             String data = texData.getText(), d = "";
-            if (resu.next() == true) { 
+            if (resu.next() == true) {
                 //funziona solo fino a 2099
-                d = "20"+data.substring(data.length()-2, data.length());
+                d = "20" + data.substring(data.length() - 2, data.length());
             } else {
-                d = data.substring(data.length()-4, data.length());
+                d = data.substring(data.length() - 4, data.length());
             }
-         
+
+            DateFormat dateFormat = new SimpleDateFormat("yyyy");
+            Date date = new Date();
+
+            if (!d.equals(dateFormat.format(date))) {
+                int numeroPost = 1;
+                String sqlMaxInYear = "SELECT MAX(numero) FROM registrazione_prima_nota WHERE data LIKE '%" + d + "%'";
+                resu = stat.executeQuery(sqlMaxInYear);
+                if (resu.next() == true) {
+                    Integer res = resu.getInt(1);
+                    if (res != null) {
+                        numeroPost = res + 1;
+                    }
+                }
+                texNumero.setText(numeroPost + "");
+            }
+
             stat = Db.getConn().createStatement();
-            String sqlCheck = "SELECT * FROM `registrazione_prima_nota` WHERE numero = "+texNumero.getText()+" AND data LIKE '%"+d+"%'";
-            
-            resu = stat.executeQuery(sqlCheck);       
-        
-            if (resu.next() == true) { 
+            String sqlCheck = "SELECT * FROM `registrazione_prima_nota` WHERE numero = " + texNumero.getText() + " AND data LIKE '%" + d + "%'";
+
+            resu = stat.executeQuery(sqlCheck);
+
+            if (resu.next() == true) {
                 int ret = JOptionPane.showConfirmDialog(this, "Record già presente. Continuare?", "Attenzione", JOptionPane.YES_NO_OPTION);
 
                 if (ret == JOptionPane.YES_OPTION) {
@@ -601,7 +612,7 @@ public class frmVettori
                         this.comboToRefresh.dbRefreshItems();
                         this.dispose();
                     }
-                } 
+                }
             } else {
                 this.dati.dbSave();
                 this.griglia.dbRefresh();
@@ -629,16 +640,15 @@ public class frmVettori
 
             String sql = "select id from registrazione_prima_nota order by id desc limit 1";
             resu = stat.executeQuery(sql);
-            
+
             //trovo la data corrente e uso l'anno corrente per cercare il massimo numero in quest'anno            
             DateFormat dateFormat = new SimpleDateFormat("yyyy");
-            Date date = new Date();         
-            String sqlMaxInYear = "SELECT MAX(numero) FROM registrazione_prima_nota WHERE data LIKE '%"+dateFormat.format(date)+"%'";
-            
+            Date date = new Date();
+            String sqlMaxInYear = "SELECT MAX(numero) FROM registrazione_prima_nota WHERE data LIKE '%" + dateFormat.format(date) + "%'";
+
             statMaxInYear = Db.getConn().createStatement();
             resuMaxInYear = statMaxInYear.executeQuery(sqlMaxInYear);
-             
-                
+
             if (resu.next() == true) {
                 this.texCodi.setText(String.valueOf(resu.getInt(1) + 1));
                 if (resuMaxInYear.next() == true) {
@@ -723,13 +733,13 @@ public class frmVettori
                 sqlWhereDaData = " data >= " + Db.pc2(this.texDal.getText(), Types.DATE);
             }
         }
-        
+
         if (this.texAl.getText().length() == 0) {
             sqlWhereAData = "";
         } else {
             if (it.tnx.Checks.isDate(this.texAl.getText())) {
                 sqlWhereAData = " data <= " + Db.pc2(this.texAl.getText(), Types.DATE);
-               
+
             }
         }
         dbRefresh();
@@ -817,12 +827,11 @@ public class frmVettori
             }
         }
         sql += " order by data desc";
-        System.out.println("sql: " + sql);
         this.dati.dbOpenD2(Db.getConn(), sql);  //-->tnxDbpanel.java
         this.dati.dbRefresh();
         this.griglia.dbOpen(Db.getConn(), sql);
         this.griglia.dbRefresh();
-        
+
     }
     /* DAVID */
 }
