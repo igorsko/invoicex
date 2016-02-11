@@ -1,0 +1,9 @@
+CREATE TABLE `righ_ddt_acquisto_lotti` (
+	`id_padre` INT(11) NULL DEFAULT NULL,
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`lotto` VARCHAR(200) NULL DEFAULT NULL,
+	`codice_articolo` VARCHAR(20) NULL DEFAULT NULL,
+	`qta` DECIMAL(8,2) NULL DEFAULT NULL,
+	`matricola` VARCHAR(255) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`)
+)

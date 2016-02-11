@@ -1,0 +1,197 @@
+/**
+ * Invoicex
+ * Copyright (c) 2005,2006,2007 Marco Ceccarelli, Tnx snc
+ *
+ * Questo software è soggetto, e deve essere distribuito con la licenza  
+ * GNU General Public License, Version 2. La licenza accompagna il software
+ * o potete trovarne una copia alla Free Software Foundation http://www.fsf.org .
+ *
+ * This software is subject to, and may be distributed under, the
+ * GNU General Public License, Version 2. The license should have
+ * accompanied the software or you may obtain a copy of the license
+ * from the Free Software Foundation at http://www.fsf.org .
+ * 
+ * --
+ * Marco Ceccarelli (m.ceccarelli@tnx.it)
+ * Tnx snc (http://www.tnx.it)
+ *
+ */
+package it.tnx.invoicex;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
+
+public class MacAddressUtils {
+
+    public static String getMacAddress() {
+        try {
+            if (PlatformUtils.isWindows()) {
+                return getWindowsMacAddress();
+            }
+            if (PlatformUtils.isLinux()) {
+                return getLinuxMacAddress();
+            }
+            if (PlatformUtils.isSolaris()) {
+                return getSunSolarisMacAddress();
+            }
+            if (PlatformUtils.isMac()) {
+                return getMacintoshMacAddress();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "no_mac";
+    }
+
+    public static String getWindowsMacAddress() throws Exception {
+        Process p = Runtime.getRuntime().exec("ipconfig /all");
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            String sLine = null;
+            while ((sLine = br.readLine()) != null) {
+                sLine = sLine.trim();
+                if (isPhysicalAddressLine(sLine)) {
+                    StringTokenizer st = new StringTokenizer(sLine, ":");
+                    st.nextToken();
+                    try {
+                        return st.nextToken().trim();
+                    } catch (Exception e) {
+                        System.out.println(e.toString() + " linea:" + sLine);
+                        e.printStackTrace();
+                        return sLine;
+                    }
+                }
+            }
+            throw new Exception("Can't get windows MAC Address");
+        } finally {
+            if (br != null) {
+                br.close();
+            }
+        }
+    }
+
+    public static String getLinuxMacAddress() throws Exception {
+        try {
+            return getLinuxMacAddressViaArp();
+        } catch (Exception e) {
+            return getLinuxMacAddressViaIfconfig();
+        }
+    }
+
+    public static String getLinuxMacAddressViaArp() throws Exception {
+        String cmd = "/sbin/arp";
+        File ftest = new File(cmd);
+        if (!ftest.exists()) {
+            cmd = "/usr/sbin/arp";
+        }
+        Process p = Runtime.getRuntime().exec(cmd);
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            br.readLine();
+            String sLine = br.readLine();
+            try {
+                if (sLine != null) {
+                    StringTokenizer st = new StringTokenizer(sLine, " \t");
+                    st.nextToken();
+                    st.nextToken();
+                    return st.nextToken().trim();
+                } else {
+                    return "";
+                }
+            } catch (Exception e) {
+                System.out.println(e.toString() + " linea:" + sLine);
+                e.printStackTrace();
+                return sLine;
+            }
+        } finally {
+            if (br != null) {
+                br.close();
+            }
+        }
+    }
+
+    public static String getLinuxMacAddressViaIfconfig() throws Exception {
+        Process p = Runtime.getRuntime().exec("ifconfig");
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            StringTokenizer st = new StringTokenizer(br.readLine(), " \t");
+            String sToken = "";
+            while (st.hasMoreTokens()) {
+                sToken = st.nextToken();
+            }
+            return sToken;
+        } finally {
+            if (br != null) {
+                br.close();
+            }
+        }
+    }
+
+    public static String getSunSolarisMacAddress() throws Exception {
+        Process p = Runtime.getRuntime().exec("/sbin/arp");
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            br.readLine();
+            StringTokenizer st = new StringTokenizer(br.readLine(), " \t");
+            st.nextToken();
+            st.nextToken();
+            return st.nextToken().trim();
+        } finally {
+            if (br != null) {
+                br.close();
+            }
+        }
+    }
+
+    public static String getMacintoshMacAddress() throws Exception {
+        Process p = Runtime.getRuntime().exec("ifconfig");
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            String sLine = null;
+            while ((sLine = br.readLine()) != null) {
+                sLine = sLine.trim();
+                if (sLine.startsWith("ether")) {
+                    StringTokenizer st = new StringTokenizer(sLine, " \t");
+                    st.nextToken();
+                    return st.nextToken();
+                }
+            }
+        } finally {
+            if (br != null) {
+                br.close();
+            }
+        }
+        throw new Exception("Can't obtain MacAddress...");
+    }
+
+    public static void main(String[] args) {
+        try {
+            System.out.println("MAC: " + getMacAddress());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static boolean isPhysicalAddressLine(String sLine) {
+        return sLine.startsWith("Physical Address") || // english
+                sLine.startsWith("Fyysinen osoite") || // finnish
+                sLine.startsWith("Physikalische Adresse") || // german
+                sLine.startsWith("Adres fizyczny") || // polish
+                sLine.startsWith("Fysisk adress") || // swedish
+                sLine.startsWith("Indirizzo fisico") || // italiano
+                sLine.startsWith("Dirección fisica") ||          // spanish
+                sLine.startsWith("Endereço físico"); // portoghese
+    }
+
+    private MacAddressUtils() {
+    }
+}

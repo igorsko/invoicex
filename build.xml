@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Invoicex_mercurial" default="default" basedir=".">
+    <description>Builds, tests, and runs the project Invoicex_mercurial.</description>
+    <import file="nbproject/build-impl.xml"/>
+
+
+    <target name="init_my_var">
+        <property name="rel1" value="1.8.5"/>
+        <property name="rel2" value="20131010"/>
+        <!--<property name="izpack_compile" value="C:\programmi\IzPack432\bin\compile.bat"/>-->
+        <property name="izpack_compile" value="C:\program files\IzPack435\bin\compile.bat"/>
+        <!--<property name="izpack_compile" value="C:\program files\IzPack500b11\bin\compile.bat"/>-->
+        <property name="makensis" value="C:\Program Files\NSIS\makensis.exe"/>
+        <property name="copia" value="W:\www\download\${user.name}"/>
+    </target>
+
+
+    <target name="-post-jar">
+        <copyfile src="${dist.jar}" dest="dist/Invoicex.jar" />
+        <copyfile src="dist/Invoicex.jar" dest="../Invoicex_altro/run/Invoicex.jar" />
+    </target>
+
+
+    <target name="post-jar-manuale" depends="Invoicex_mercurial-impl.jar">
+        <copy file="${dist.jar}" tofile="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\Invoicex.jar"/>
+<!--        <copy file="exe\Invoicex.exe" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all_win"/>
+        <copy file="${dist.jar}" tofile="../Invoicex_altro/run/Invoicex.jar"/>
+        <copy file="${dist.jar}" tofile="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\Invoicex.jar"/>
+        <copy file="${dist.dir}\lib\commons-tnx.jar" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\lib"/>
+
+        <copy file="${dist.dir}\lib\beansbinding-1.2.1.jar" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\lib"/>
+        <copy file="${dist.dir}\lib\Invoicex_res.jar" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\lib"/>
+
+        <copy file="${dist.dir}\lib\mail.jar" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\lib"/>
+        <copy file="${dist.dir}\lib\commons-email-1.2.jar" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\lib"/>
+        <copy file="${dist.dir}\lib\activation.jar" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\lib"/>
+        <copy file="${dist.dir}\lib\commons-net-2.2.jar" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\lib"/>
+        <copy file="${dist.dir}\lib\jgoodies-common-0.9.9.jar" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\lib"/>
+        <copy file="${dist.dir}\lib\jgoodies-looks-2.4.0b1_nbproject.jar" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\lib"/>
+
+        <copy file="${dist.dir}\lib\jide-oss-3.3.5.jar" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\lib"/>
+        <copy file="${dist.dir}\lib\swingx-1.0.jar" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\lib"/>
+        <copy file="${dist.dir}\lib\swing-layout-1.0.4.jar" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\lib"/>
+
+        <copy file="../Invoicex_altro/run/note_rilascio.inc.php" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\" verbose="true"/>
+
+         reports 
+        <copy file="../Invoicex_altro/run/reports/cedolino_bonifico.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\"/>
+        <copy file="../Invoicex_altro/run/reports/iva.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\"/>
+        <copy file="../Invoicex_altro/run/reports/stats_monthly.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\"/>
+        <copy file="../Invoicex_altro/run/reports/stats_monthly.jasper" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\"/>
+
+        <copy file="../Invoicex_altro/run/reports/provvigioni.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\"/>
+        <copy file="../Invoicex_altro/run/reports/provvigioni.jasper" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\"/>
+        <copy file="../Invoicex_altro/run/reports/provvigioni_det.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\"/>
+        <copy file="../Invoicex_altro/run/reports/provvigioni_det_subreport1.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\"/>
+        <copy file="../Invoicex_altro/run/reports/provvigioni_det_subreport1.jasper" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\"/>
+
+        <copy file="../Invoicex_altro/run/reports/magazzino/Giacenze.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\magazzino"/>
+        <copy file="../Invoicex_altro/run/reports/magazzino/GiacenzeLotti.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\magazzino"/>
+        <copy file="../Invoicex_altro/run/reports/magazzino/GiacenzeLottiPrezzo.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\magazzino"/>
+        <copy file="../Invoicex_altro/run/reports/magazzino/GiacenzeMatricola.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\magazzino"/>
+        <copy file="../Invoicex_altro/run/reports/magazzino/GiacenzeMatricolaPrezzo.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\magazzino"/>
+        <copy file="../Invoicex_altro/run/reports/magazzino/GiacenzePrezzo.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\magazzino"/>
+
+        <copy file="../Invoicex_altro/run/reports/fatture/ddt_default.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/ddt_mod2_default.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/ddt_mod3_default.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/fattura_acc_default.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/fattura_acc_mod2_default.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/fattura_acquisto_default.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/fattura_default.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/fattura_default_lang.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/fattura_mod2_default.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/fattura_mod3_default.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/ordine_default.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/ordine_mod2_default.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\fatture"/>
+
+        <copy file="../Invoicex_altro/run/reports/fatture/ordine_mod4_default.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/ddt_mod5_default.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/fattura_mod4_default.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/fattura_acc_mod4_default.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\fatture"/>
+
+        <copy file="../Invoicex_altro/run/reports/fatture/ordine_mod5_default.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/fattura_mod5_default.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/fattura_acc_mod5_default.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\fatture"/>
+
+        <copy file="../Invoicex_altro/run/note_rilascio.inc.php" tofile="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\note_rilascio.inc.php"/>
+
+         plugins 
+        <copy file="C:\lavori\tnx\private\InvoicexPluginAutoUpdate\dist\InvoicexPluginAutoUpdate.jar" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\plugins\plugins"/>
+        <copy file="C:\lavori\tnx\private\InvoicexPluginBackupTnx\dist\InvoicexPluginBackupTnx.jar" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\plugins\plugins"/>
+        <copy file="C:\lavori\tnx\private\InvoicexPluginRiba\dist\InvoicexPluginRiba.jar" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\plugins\plugins"/>
+        <copy file="C:\lavori\tnx\private\InvoicexPluginRicerca\dist\InvoicexPluginRicerca.jar" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\plugins\plugins"/>
+        <copy file="C:\lavori\tnx\private\InvoicexPluginRitenute\dist\InvoicexPluginRitenute.jar" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\plugins\plugins"/>
+        <copy file="C:\lavori\tnx\private\InvoicexPluginEmail\dist\InvoicexPluginEmail.jar" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\plugins\plugins"/>
+
+        <copy file="C:\lavori\tnx\private\InvoicexPluginAutoUpdate\dist\InvoicexPluginAutoUpdate.jar" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\plugins_pro\plugins"/>
+        <copy file="C:\lavori\tnx\private\InvoicexPluginBackupTnx\dist\InvoicexPluginBackupTnx.jar" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\plugins_pro\plugins"/>
+        <copy file="C:\lavori\tnx\private\InvoicexPluginRicerca\dist\InvoicexPluginRicerca.jar" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\plugins_pro\plugins"/>
+        <copy file="C:\lavori\tnx\private\InvoicexPluginEmail\dist\InvoicexPluginEmail.jar" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\plugins_pro\plugins"/>-->
+
+    </target>
+
+    <target name="copia_in_c_users" depends="init">
+        <copy file="${dist.jar}" tofile="C:\Users\Public\TNX\Invoicex\invoicex.jar"/>
+        <copy file="${dist.dir}\lib\commons-tnx.jar" todir="C:\Users\Public\TNX\Invoicex\lib"/>
+        <copy file="${dist.dir}\lib\tnxBeans.jar" todir="C:\Users\Public\TNX\Invoicex\lib"/>
+        <copy file="${dist.dir}\lib\tnxUtil.jar" todir="C:\Users\Public\TNX\Invoicex\lib"/>
+    </target>
+
+    <target name="ftp_tnx_pro" depends="init, init_my_var">
+        <input message="password indi:" addproperty="indipass"/>
+        <ftp server="tnx.it"
+            userid="indi"
+            password="${indipass}" verbose="true" remotedir="/SITI/tnx2006/download_invoicex">
+            <fileset file="c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_${rel1}_pro_win.exe"/>
+            <fileset file="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_pro_linux.jar"/>
+            <fileset file="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_pro_macosx.jar"/>
+        </ftp>
+    </target>
+
+    <target name="ftp_tnx_ent" depends="init, init_my_var">
+        <property name="path" value="/home/httpd/html/pagine/indi/SITI/tnx2006/download_invoicex"/>
+        <input message="password indi:" addproperty="indipass"/>
+        <input message="password cecca:" addproperty="ceccapass"/>
+        <ftp server="tnx.it"
+            userid="indi"
+            password="${indipass}" verbose="true" remotedir="/SITI/tnx2006/download_invoicex">
+            <fileset file="c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_${rel1}_ent_win.exe"/>
+            <fileset file="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_ent_linux.jar"/>
+            <fileset file="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_ent_macosx.jar"/>
+        </ftp>
+
+        <sshexec host="tnx.it"
+            username="cecca"
+            password="${ceccapass}"
+            trust="yes"
+            command="cp ${path}/Invoicex_Setup_${rel1}_ent_macosx.jar ${path}/Invoicex_Setup_${rel1}_pro_plus_macosx.jar; cp ${path}/Invoicex_Setup_${rel1}_ent_linux.jar ${path}/Invoicex_Setup_${rel1}_pro_plus_linux.jar; cp ${path}/Invoicex_Setup_${rel1}_ent_win.exe ${path}/Invoicex_Setup_${rel1}_pro_plus_win.exe"
+        />
+    </target>
+
+    <target name="scp_sf" depends="init, init_my_var">
+        <input message="password sf:" addproperty="sfpass"/>
+        <echo output="win"/>
+        <scp sftp="true" trust="true" file="c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_${rel1}_${rel2}_win.exe" todir="mceccarellitnx,invoicex:${sfpass}@frs.sourceforge.net:/home/frs/project/i/in/invoicex/Invoicex" verbose="true"/>
+        <echo output="mac"/>
+        <scp sftp="true" trust="true" file="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_macosx.jar" todir="mceccarellitnx,invoicex:${sfpass}@frs.sourceforge.net:/home/frs/project/i/in/invoicex/Invoicex" verbose="true"/>
+        <echo output="lin"/>
+        <scp sftp="true" trust="true" file="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_linux.jar" todir="mceccarellitnx,invoicex:${sfpass}@frs.sourceforge.net:/home/frs/project/i/in/invoicex/Invoicex" verbose="true"/>
+        <echo message="https://sourceforge.net/project/admin/explorer.php?group_id=160182"/>
+    </target>
+
+    <target name="scp_sf_solowin" depends="init, init_my_var">
+        <input message="password sf:" addproperty="sfpass"/>
+        <echo output="win"/>
+        <scp sftp="true" trust="true" file="c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_${rel1}_${rel2}_win.exe" todir="mceccarellitnx,invoicex:${sfpass}@frs.sourceforge.net:/home/frs/project/i/in/invoicex/Invoicex" verbose="true"/>
+        <echo message="https://sourceforge.net/project/admin/explorer.php?group_id=160182"/>
+    </target>
+
+    <target name="scp_sf_solomac"  depends="init_my_var">
+        <input message="password sf:" addproperty="sfpass"/>
+        <scp sftp="true" trust="true" file="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_macosx.jar" todir="mceccarellitnx,invoicex:${sfpass}@frs.sourceforge.net:/home/frs/project/i/in/invoicex/Invoicex" verbose="true"/>
+        <echo message="Invoicex_Setup_${rel1}_${rel2}_macosx.jar"/>
+    </target>
+
+    <target name="scp_sf_sololinux"  depends="init_my_var">
+        <input message="password sf:" addproperty="sfpass"/>
+        <scp sftp="true" trust="true" file="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_linux.jar" todir="mceccarellitnx,invoicex:${sfpass}@frs.sourceforge.net:/home/frs/project/i/in/invoicex/Invoicex" verbose="true"/>
+        <echo message="Invoicex_Setup_${rel1}_${rel2}_linux.jar"/>
+    </target>
+
+    <target name="scp_sf_src" depends="init_my_var">
+        <input message="password sf:" addproperty="sfpass"/>
+        <scp sftp="true" trust="true" file="..\invoicex_altro\Invoicex_src_${rel1}_${rel2}.zip" todir="mceccarellitnx,invoicex:${sfpass}@frs.sourceforge.net:/home/frs/project/i/in/invoicex/Invoicex" verbose="true"/>
+    </target>
+
+    <target name="scp_sf_test">
+        <input message="password sf:" addproperty="sfpass"/>
+        <scp sftp="true" trust="true" file="c:\test.txt" todir="mceccarellitnx:${sfpass}@frs.sourceforge.net:/incoming/m/mc/mceccarellitnx/uploads" verbose="true"/>
+    </target>
+
+    <target name="prepara_sf_zipsrc" depends="init_my_var, post-jar-manuale">
+        <delete file="..\invoicex_altro\Invoicex_src_${rel1}_${rel2}.zip" verbose="true"/>
+        <zip destfile="..\invoicex_altro\Invoicex_src_${rel1}_${rel2}.zip">
+            <zipfileset dir="C:\lavori\tnx\private\Invoicex_mercurial" excludes=".hg/**,dist/**,build/**,*/profiler/**" prefix="Invoicex_mercurial"/>
+            <zipfileset dir="C:\lavori\tnx\private\Invoicex_res" excludes=".hg/**,build/**,*/profiler/**" prefix="Invoicex_res"/>
+            <zipfileset dir="C:\lavori\tnx\private\commons-tnx" prefix="commons-tnx"/>
+            <zipfileset dir="C:\lavori\java\lib\jgoodies-looks-2.4.0b1" excludes="docs/**" prefix="jgoodies-looks-2.4.0b1"/>
+            <zipfileset dir="C:\lavori\java\lib\jgoodies-looks-2.4.0b1_nbproject" prefix="jgoodies-looks-2.4.0b1_nbproject"/>
+            <zipfileset dir="C:\lavori\java\lib\jide-oss-3.3.5" prefix="jide-oss-3.3.5"/>
+        </zip>
+    </target>
+
+    <target name="prepara_scontrini" depends="post-jar-manuale, init, init_my_var">
+        <!--per lanzoni zeroquadro e vendilo -->
+        <copy file="../Invoicex_altro/run/reports/scontrino.jrxml" todir="T:\lavori\tnx\Invoicex_altro\installazione_nsis\all\reports\"/>
+        <exec executable="C:\programmi\NSIS\makensis.exe">
+            <arg value="t:\lavori\tnx\Invoicex_altro\installazione_nsis\Invoicex_scontrini.nsi"/>
+        </exec>
+        <rename src="c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_1.7.7_win_scontrini.exe"
+                dest="c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_${rel1}_${rel2}_win_scontrini.exe" />
+        <exec executable="explorer" spawn="true">
+            <arg value="/select,c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_${rel1}_${rel2}_win_scontrini.exe"/>
+        </exec>
+        <copy todir="${copia}">
+            <fileset file="c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_${rel1}_${rel2}_win_scontrini.exe"></fileset>
+        </copy>
+
+        <exec executable="${izpack_compile}" >
+            <arg value="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_1.7.7_linux_scontrini.xml"/>
+            <arg value="-b"/>
+            <arg value="."/>
+            <arg value="-o"/>
+            <arg value="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_linux_scontrini.jar"/>
+            <arg value="-k"/>
+            <arg value="standard"/>
+        </exec>
+        <exec executable="explorer" spawn="true">
+            <arg value="/select,c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_linux_scontrini.jar"/>
+        </exec>
+        <copy todir="${copia}">
+            <fileset file="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_linux_scontrini.jar"></fileset>
+        </copy>
+
+        <exec executable="${izpack_compile}" >
+            <arg value="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_1.7.7_macosx_app_scontrini.xml"/>
+            <arg value="-b"/>
+            <arg value="."/>
+            <arg value="-o"/>
+            <arg value="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_macosx_scontrini.jar"/>
+            <arg value="-k"/>
+            <arg value="standard"/>
+        </exec>
+        <exec executable="explorer" spawn="true">
+            <arg value="/select,c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_macosx_scontrini.jar"/>
+        </exec>
+        <copy todir="${copia}">
+            <fileset file="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_macosx_scontrini.jar"></fileset>
+        </copy>
+
+        <echo message="http://www.tnx.dyndns.org/download/${user.name}/Invoicex_Setup_${rel1}_${rel2}_win_scontrini.exe"/>
+        <echo message="http://www.tnx.dyndns.org/download/${user.name}/Invoicex_Setup_${rel1}_${rel2}_linux_scontrini.jar"/>
+        <echo message="http://www.tnx.dyndns.org/download/${user.name}/Invoicex_Setup_${rel1}_${rel2}_macosx_scontrini.jar"/>
+
+    </target>
+
+    <target name="prepara_sf" depends="post-jar-manuale, init, init_my_var">
+
+        <exec executable="${makensis}">
+            <arg value="t:\lavori\tnx\Invoicex_altro\installazione_nsis\Invoicex.nsi"/>
+        </exec>
+        <rename src="c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_win.exe"
+                dest="c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_${rel1}_${rel2}_win.exe" />
+        
+        <exec executable="signtool">
+            <arg value="sign"/>
+            <arg value="/i"/>
+            <arg value="Go Daddy"/>
+            <arg value="/d"/>
+            <arg value="Invoicex"/>
+            <arg value="/du"/>
+            <arg value="http://www.invoicex.it"/>
+            <arg value="/t"/>
+            <arg value="http://tsa.starfieldtech.com"/>
+            <arg value="c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_${rel1}_${rel2}_win.exe" />
+        </exec>
+                
+        <exec executable="explorer" spawn="true">
+            <arg value="/select,c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_${rel1}_${rel2}_win.exe"/>
+        </exec>
+
+        <!--sotistuzione var dentro xml-->
+        <copyfile forceoverwrite="true" src="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_macosx_app_param.xml" dest="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_macosx_app.xml" />
+        <replace file="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_macosx_app.xml">          
+            <replacefilter token="{version}" value="${rel1} - ${rel2}"/>
+        </replace>
+        <exec executable="${izpack_compile}" >
+            <arg value="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_macosx_app.xml"/>
+            <arg value="-b"/>
+            <arg value="."/>
+            <arg value="-o"/>
+            <arg value="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_macosx.jar"/>
+            <arg value="-k"/>
+            <arg value="standard"/>
+        </exec>
+        <exec executable="explorer" spawn="true">
+            <arg value="/select,c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_macosx.jar"/>
+        </exec>
+
+
+        <!--sotistuzione var dentro xml-->
+        <copyfile forceoverwrite="true" src="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_linux_param.xml" dest="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_linux.xml" />
+        <replace file="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_linux.xml">          
+            <replacefilter token="{version}" value="${rel1} - ${rel2}"/>
+        </replace>
+        <exec executable="${izpack_compile}" >
+            <arg value="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_linux.xml"/>
+            <arg value="-b"/>
+            <arg value="."/>
+            <arg value="-o"/>
+            <arg value="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_linux.jar"/>
+            <arg value="-k"/>
+            <arg value="standard"/>
+        </exec>
+        <exec executable="explorer" spawn="true">
+            <arg value="/select,c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_linux.jar"/>
+        </exec>
+
+    </target>
+
+    <target name="prepara_sf_improvvivo" depends="post-jar-manuale, init, init_my_var">
+
+<!--        <exec executable="C:\programmi\NSIS\makensis.exe">
+            <arg value="t:\lavori\tnx\Invoicex_altro\installazione_nsis\Invoicex_improvvivo.nsi"/>
+        </exec>
+        <rename src="c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_1.7.7_win_improvvivo.exe"
+                dest="c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_${rel1}_${rel2}_win_improvvivo.exe" />
+        <exec executable="explorer" spawn="true">
+            <arg value="/select,c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_${rel1}_${rel2}_win_improvvivo.exe"/>
+        </exec>
+        <copy todir="${copia}">
+            <fileset file="c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_${rel1}_${rel2}_win_improvvivo.exe"></fileset>
+        </copy>
+-->
+        <exec executable="${izpack_compile}" >
+            <arg value="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_1.7.7_linux_improvvivo.xml"/>
+            <arg value="-b"/>
+            <arg value="."/>
+            <arg value="-o"/>
+            <arg value="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_linux_improvvivo.jar"/>
+            <arg value="-k"/>
+            <arg value="standard"/>
+        </exec>
+        <exec executable="explorer" spawn="true">
+            <arg value="/select,c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_linux_improvvivo.jar"/>
+        </exec>
+        <copy todir="${copia}">
+            <fileset file="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_linux_improvvivo.jar"></fileset>
+        </copy>
+
+        <!--<echo message="http://www.tnx.dyndns.org/download/${user.name}/Invoicex_Setup_${rel1}_${rel2}_win_improvvivo.exe"/>-->
+        <echo message="http://www.tnx.dyndns.org/download/${user.name}/Invoicex_Setup_${rel1}_${rel2}_linux_improvvivo.jar"/>
+    </target>
+
+
+    <target name="prepara_ent" depends="post-jar-manuale, init, init_my_var">
+
+        <exec executable="C:\programmi\NSIS\makensis.exe">
+            <arg value="t:\lavori\tnx\Invoicex_altro\installazione_nsis\Invoicex_ent.nsi"/>
+        </exec>
+        <rename src="c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_ent_win.exe"
+                dest="c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_${rel1}_${rel2}_ent_win.exe" />
+        <exec executable="explorer" spawn="true">
+            <arg value="/select,c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_${rel1}_${rel2}_ent_win.exe"/>
+        </exec>
+
+        <!--sotistuzione var dentro xml-->
+        <copyfile forceoverwrite="true" src="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_linux_ent_param.xml" dest="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_linux_ent.xml" />
+        <replace file="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_linux_ent.xml">
+            <replacefilter token="{version}" value="${rel1} - ${rel2}"/>
+        </replace>
+        <exec executable="${izpack_compile}" >
+            <arg value="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_linux_ent.xml"/>
+            <arg value="-b"/>
+            <arg value="."/>
+            <arg value="-o"/>
+            <arg value="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_ent_linux.jar"/>
+            <arg value="-k"/>
+            <arg value="standard"/>
+        </exec>
+
+        <!--sotistuzione var dentro xml-->
+        <copyfile forceoverwrite="true" src="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_macosx_app_ent_param.xml" dest="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_macosx_app.xml" />
+        <replace file="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_macosx_ent_app.xml">
+            <replacefilter token="{version}" value="${rel1} - ${rel2}"/>
+        </replace>
+        <exec executable="${izpack_compile}" >
+            <arg value="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_macosx_app_ent.xml"/>
+            <arg value="-b"/>
+            <arg value="."/>
+            <arg value="-o"/>
+            <arg value="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_ent_macosx.jar"/>
+            <arg value="-k"/>
+            <arg value="standard"/>
+        </exec>
+
+        <copy file="c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_${rel1}_${rel2}_ent_win.exe" tofile="c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_${rel1}_${rel2}_pro_plus_win.exe"/>
+        <copy file="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_ent_linux.jar" tofile="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_pro_plus_linux.jar"/>
+        <copy file="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_ent_macosx.jar" tofile="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_pro_plus_macosx.jar"/>
+
+        <copy todir="${copia}">
+            <fileset file="c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_${rel1}_ent_win.exe"></fileset>
+            <fileset file="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_ent_linux.jar"></fileset>
+            <fileset file="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_ent_macosx.jar"></fileset>
+        </copy>
+
+    </target>
+
+
+    <target name="prepara_sf_win"  depends="post-jar-manuale">
+        <!--
+        <exec executable="explorer" spawn="true">
+            <arg value="T:\lavori\tnx\Invoicex_altro\installazione_nsis"/>
+        </exec>
+        -->
+
+        <exec executable="C:\programmi\NSIS\makensis.exe">
+            <arg value="T:\lavori\tnx\Invoicex_altro\installazione_nsis\Invoicex.nsi"/>
+        </exec>
+
+        <!--
+        <copy file="T:\lavori\tnx\Invoicex_altro\installazione_nsis\Invoicex_Setup_177.exe" todir="W:\www\download" verbose="true"/>
+
+        <echo message=""/>
+        <echo message="per Windows"/>
+        <echo message="http://demo.tnx.it/download/Invoicex_Setup_177.exe"/>
+        <echo message=""/>
+        -->
+    </target>
+
+    <target name="prepara_cm"  depends="post-jar-manuale">
+        <exec executable="C:\programmi\NSIS\makensis.exe">
+            <arg value="T:\lavori\tnx\Invoicex_altro\installazione_nsis\Invoicex_cm.nsi"/>
+        </exec>
+        <exec executable="${izpack_compile}" >
+            <arg value="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_1.7.7_cm_linux.xml"/>
+            <arg value="-b"/>
+            <arg value="."/>
+            <arg value="-o"/>
+            <arg value="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_1.7.7_cm_linux.jar"/>
+            <arg value="-k"/>
+            <arg value="standard"/>
+        </exec>
+        <exec executable="${izpack_compile}" >
+            <arg value="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_1.7.7_cm_macosx_app.xml"/>
+            <arg value="-b"/>
+            <arg value="."/>
+            <arg value="-o"/>
+            <arg value="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_1.7.7_cm_macosx.jar"/>
+            <arg value="-k"/>
+            <arg value="standard"/>
+        </exec>
+    </target>
+
+
+    <target name="prepara_sf_win_solojar" depends="post-jar-manuale">
+
+        <exec executable="C:\programmi\NSIS\makensis.exe">
+            <arg value="T:\lavori\tnx\Invoicex_altro\installazione_nsis\Invoicex_solojar.nsi"/>
+        </exec>
+
+        <copy file="T:\lavori\tnx\Invoicex_altro\installazione_nsis\Invoicex_Setup_177_solojar.exe" todir="W:\www\download" verbose="true"/>
+
+        <echo message=""/>
+        <echo message="per Windows"/>
+        <echo message="http://demo.tnx.it/download/Invoicex_Setup_177_solojar.exe"/>
+        <echo message=""/>
+    </target>
+
+    <target name="prepara_sf_linux" depends="post-jar-manuale, init, init_my_var">
+        
+        <!--sotistuzione var dentro xml-->
+        <copyfile forceoverwrite="true" src="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_linux_param.xml" dest="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_linux.xml" />
+        <replace file="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_linux.xml">          
+            <replacefilter token="{version}" value="${rel1} - ${rel2}"/>
+        </replace>
+
+        <exec executable="${izpack_compile}" >
+            <arg value="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_linux.xml"/>
+            <arg value="-b"/>
+            <arg value="."/>
+            <arg value="-o"/>
+            <arg value="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_linux.jar"/>
+            <arg value="-k"/>
+            <arg value="standard"/>
+        </exec>
+        <exec executable="explorer" spawn="true">
+            <arg value="/select,c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_linux.jar"/>
+        </exec>
+        <copy todir="${copia}">
+            <fileset file="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_linux.jar"></fileset>
+        </copy>
+
+        <echo message="http://www.tnx.dyndns.org/download/${user.name}/Invoicex_Setup_${rel1}_${rel2}_linux.jar"/>
+
+
+    </target>
+
+
+    <target name="prepara_sf_mac" depends="post-jar-manuale">
+        <exec executable="${izpack_compile}" >
+            <arg value="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_macosx_app.xml"/>
+            <arg value="-b"/>
+            <arg value="."/>
+            <arg value="-o"/>
+            <arg value="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_macosx.jar"/>
+            <arg value="-k"/>
+            <arg value="standard"/>
+        </exec>
+
+        <echo message=""/>
+        <echo message="per Mac Osx"/>
+        <echo message="http://demo.tnx.it/download/Invoicex_Setup_macosx.jar"/>
+
+    </target>
+
+    
+
+    <target name="prepara_full_win" depends="post-jar-manuale">
+        <exec executable="C:\programmi\NSIS\makensis.exe">
+            <arg value="T:\lavori\tnx\Invoicex_altro\installazione_nsis\Invoicex_full.nsi"/>
+        </exec>
+        <copy file="T:\lavori\tnx\Invoicex_altro\installazione_nsis\Invoicex_Setup_177_full.exe" todir="W:\www\download\4378974389HD735SH" verbose="true"/>
+        <echo message="http://demo.tnx.it/download/4378974389HD735SH/Invoicex_Setup_177_full.exe"/>
+    </target>
+
+    <target name="prepara_pro" depends="prepara_pro_win, prepara_pro_linux, prepara_pro_mac">
+
+<!--        <copy file="c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_${rel1}_pro_win.exe" todir="W:\www\download\${user.name}" verbose="true"/>-->
+<!--        <copy file="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_pro_linux.jar" todir="W:\www\download\${user.name}" verbose="true"/>-->
+<!--        <copy file="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_pro_macosx.jar" todir="W:\www\download\${user.name}" verbose="true"/>-->
+
+<!--        <echo message="http://www.tnx.dyndns.org/download/${user.name}/Invoicex_Setup_${rel1}_${rel2}_pro_win.exe"/>
+        <echo message="http://www.tnx.dyndns.org/download/${user.name}/Invoicex_Setup_${rel1}_${rel2}_pro_linux.jar"/>
+        <echo message="http://www.tnx.dyndns.org/download/${user.name}/Invoicex_Setup_${rel1}_${rel2}_pro_macosx.jar"/>-->
+
+        <echo message="fine"/>
+    </target>
+
+    <target name="prepara_pro_win" depends="post-jar-manuale, init, init_my_var">
+        <exec executable="C:\programmi\NSIS\makensis.exe">
+            <arg value="t:\lavori\tnx\Invoicex_altro\installazione_nsis\Invoicex_pro.nsi"/>
+        </exec>
+        <rename src="c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_pro_win.exe"
+                dest="c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_${rel1}_${rel2}_pro_win.exe" />
+        <exec executable="explorer" spawn="true">
+            <arg value="/select,c:\lavori\tnx\private\Invoicex_altro\installazione_nsis\Invoicex_Setup_${rel1}_${rel2}_pro_win.exe"/>
+        </exec>
+    </target>
+
+    <target name="prepara_full_linux" depends="post-jar-manuale">
+        <exec executable="${izpack_compile}" >
+            <arg value="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_linux_full.xml"/>
+            <arg value="-b"/>
+            <arg value="."/>
+            <arg value="-o"/>
+            <arg value="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_full_linux_java5.jar"/>
+            <arg value="-k"/>
+            <arg value="standard"/>
+        </exec>
+        <copy file="T:\lavori\tnx\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_full_linux_java5.jar" todir="W:\www\download\4378974389HD735SH" verbose="true"/>
+        <echo message="http://demo.tnx.it/download/4378974389HD735SH/Invoicex_Setup_${rel1}_full_linux_java5.jar"/>
+    </target>
+
+    <target name="prepara_pro_linux" depends="post-jar-manuale, init, init_my_var">
+        <!--sotistuzione var dentro xml-->
+        <copyfile forceoverwrite="true" src="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_linux_pro_param.xml" dest="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_linux_pro.xml" />
+        <replace file="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_linux_pro.xml">
+            <replacefilter token="{version}" value="${rel1} - ${rel2}"/>
+        </replace>
+        <exec executable="${izpack_compile}">
+            <arg value="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_linux_pro.xml"/>
+            <arg value="-b"/>
+            <arg value="."/>
+            <arg value="-o"/>
+            <arg value="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_pro_linux.jar"/>
+            <arg value="-k"/>
+            <arg value="standard"/>
+        </exec>
+        <echo message="copiare c:\Invoicex_Setup_1.7.7_pro_linux_java5.jar su indi : /SITI/tnx2006/download_invoicex"/>
+    </target>
+
+    <target name="prepara_full_mac" depends="post-jar-manuale">
+        <exec executable="${izpack_compile}" >
+            <arg value="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_macosx_app_full.xml"/>
+            <arg value="-b"/>
+            <arg value="."/>
+            <arg value="-o"/>
+            <arg value="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_full_macosx.jar"/>
+            <arg value="-k"/>
+            <arg value="standard"/>
+        </exec>
+        <echo message="copiare su indi : /SITI/tnx2006/download_invoicex"/>
+    </target>
+
+    <target name="prepara_pro_mac" depends="post-jar-manuale, init, init_my_var">
+        <!--sotistuzione var dentro xml-->
+        <copyfile forceoverwrite="true" src="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_macosx_app_pro_param.xml" dest="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_macosx_app.xml" />
+        <replace file="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_macosx_pro_app.xml">
+            <replacefilter token="{version}" value="${rel1} - ${rel2}"/>
+        </replace>
+        <exec executable="${izpack_compile}">
+            <arg value="T:\lavori\tnx\invoicex_altro\installazione_iz\Invoicex_Setup_macosx_app_pro.xml"/>
+            <arg value="-b"/>
+            <arg value="."/>
+            <arg value="-o"/>
+            <arg value="c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_pro_macosx.jar"/>
+            <arg value="-k"/>
+            <arg value="standard"/>
+        </exec>
+        <exec executable="explorer" spawn="true">
+            <arg value="/select,c:\lavori\tnx\private\Invoicex_altro\installazione_iz\Invoicex_Setup_${rel1}_${rel2}_pro_macosx.jar"/>
+        </exec>
+        <echo message="copiare su indi : /SITI/tnx2006/download_invoicex"/>
+    </target>
+
+    <target name="rilascia_agg">
+        <!--
+        passi:
+        1-cambiare main.build in 200x0x0x
+        2-cambiare il plugin autoaggiornamento per scaricare se diverso dal nuovo build // adesso va con data modifica file su www
+        3-cambiare il plugin autoaggiornamento per nuova versione nel file xml
+        4-aggiornare la lista plugin in invoicexwsserver
+        5-fai il build di invoicex, del plugin autoagg, di invwsserver
+        6-lancia questo script
+        -->
+        <copy file="C:\lavori\tnx\Invoicex_mercurial\dist\Invoicex.jar" todir="W:\www\download" verbose="true"/>
+        <copy file="C:\lavori\tnx\Invoicex_mercurial\dist\lib\tnxBeans.jar" todir="W:\www\download\lib" verbose="true"/>
+        <copy file="C:\lavori\tnx\Invoicex_mercurial\dist\lib\commons-tnx.jar" todir="W:\www\download\lib" verbose="true"/>
+        <copy file="C:\lavori\tnx\Invoicex_mercurial\dist\Invoicex.jar" todir="W:\www\download\invoicex" verbose="true"/>
+        <copy file="C:\lavori\tnx\Invoicex_mercurial\dist\lib\tnxBeans.jar" todir="W:\www\download\invoicex\lib" verbose="true"/>
+        <copy file="C:\lavori\tnx\Invoicex_mercurial\dist\lib\commons-tnx.jar" todir="W:\www\download\invoicex\lib" verbose="true"/>
+        <touch file="W:\www\download\invoicex_mercurial\Invoicex.jar"/>
+        <touch file="W:\www\download\invoicex_mercurial\lib\tnxBeans.jar"/>
+        <touch file="W:\www\download\invoicex_mercurial\lib\commons-tnx.jar"/>
+
+        <copy file="C:\lavori\tnx\InvoicexPluginAutoUpdate\dist\InvoicexPluginAutoUpdate.jar" todir="T:\lavori\Invoicex\agg" verbose="true"/>
+        <copy todir="\\linux\tomcat5\webapps\InvoicexWSServer\WEB-INF\classes" verbose="true">
+            <fileset dir="C:\lavori\tnx\InvoicexWSServer\build\web\WEB-INF\classes" />
+        </copy>
+        <copy file="C:\lavori\tnx\InvoicexWSServer\build\web\WEB-INF\web.xml" todir="\\linux\tomcat5\webapps\InvoicexWSServer\WEB-INF" verbose="true"/>
+        <touch file="\\linux\tomcat5\webapps\InvoicexWSServer\WEB-INF\web.xml" verbose="true"/>
+    </target>
+
+
+    <target name="rilascia_agg_dev">
+        <!--
+        passi:
+        1-cambiare main.build in 200x0x0x
+        2-cambiare il plugin autoaggiornamento per scaricare se diverso dal nuovo build // adesso va con data modifica file su www
+        3-cambiare il plugin autoaggiornamento per nuova versione nel file xml
+        4-aggiornare la lista plugin in invoicexwsserver
+        5-fai il build di invoicex, del plugin autoagg, di invwsserver
+        6-lancia questo script
+        -->
+        <copy file="C:\lavori\tnx\Invoicex_mercurial\dist\Invoicex.jar" todir="W:\www\download\invoicex_dev" verbose="true"/>
+        <copy file="C:\lavori\tnx\Invoicex_mercurial\dist\lib\tnxBeans.jar" todir="W:\www\download\invoicex_dev\lib" verbose="true"/>
+        <copy file="C:\lavori\tnx\Invoicex_mercurial\dist\lib\commons-tnx.jar" todir="W:\www\download\invoicex_dev\lib" verbose="true"/>
+        <copy file="C:\lavori\tnx\Invoicex_mercurial\dist\lib\substance-lite.jar" todir="W:\www\download\invoicex_dev\lib" verbose="true"/>
+
+        <!-- reports -->
+        <copy file="../Invoicex_altro/run/reports/cedolino_bonifico.jrxml" todir="W:\www\download\invoicex_dev\reports\"/>
+        <copy file="../Invoicex_altro/run/reports/iva.jrxml" todir="W:\www\download\invoicex_dev\reports\"/>
+        <copy file="../Invoicex_altro/run/reports/iva.jasper" todir="W:\www\download\invoicex_dev\reports\"/>
+        <copy file="../Invoicex_altro/run/reports/stats_monthly.jrxml" todir="W:\www\download\invoicex_dev\reports\"/>
+        <copy file="../Invoicex_altro/run/reports/stats_monthly.jasper" todir="W:\www\download\invoicex_dev\reports\"/>
+
+        <copy file="../Invoicex_altro/run/reports/fatture/ddt_default.jrxml" todir="W:\www\download\invoicex_dev\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/ddt_mod2_default.jrxml" todir="W:\www\download\invoicex_dev\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/ddt_mod3_default.jrxml" todir="W:\www\download\invoicex_dev\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/fattura_acc_default.jrxml" todir="W:\www\download\invoicex_dev\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/fattura_acc_mod2_default.jrxml" todir="W:\www\download\invoicex_dev\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/fattura_acquisto_default.jrxml" todir="W:\www\download\invoicex_dev\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/fattura_default.jrxml" todir="W:\www\download\invoicex_dev\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/fattura_default_lang.jrxml" todir="W:\www\download\invoicex_dev\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/fattura_mod2_default.jrxml" todir="W:\www\download\invoicex_dev\reports\fatture"/>
+        <copy file="../Invoicex_altro/run/reports/fatture/ordine_default.jrxml" todir="W:\www\download\invoicex_dev\reports\fatture"/>
+
+    </target>
+
+    <target name="test111">
+        <exec command="explorer T:\lavori\tnx\Invoicex_altro\installazione_nsis"/>
+    </target>
+
+</project>

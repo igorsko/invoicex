@@ -1,0 +1,191 @@
+annotation.processing.enabled=true
+annotation.processing.enabled.in.editor=false
+annotation.processing.run.all.processors=true
+annotation.processing.source.output=${build.generated.sources.dir}/ap-source-output
+application.title=Invoicex_mercurial
+application.vendor=mceccarelli
+build.classes.dir=${build.dir}/classes
+build.classes.excludes=**/*.java,**/*.form
+# This directory is removed when the project is cleaned:
+build.dir=build
+build.generated.dir=${build.dir}/generated
+build.generated.sources.dir=${build.dir}/generated-sources
+# Only compile against the classpath explicitly listed here:
+build.sysclasspath=ignore
+build.test.classes.dir=${build.dir}/test/classes
+build.test.results.dir=${build.dir}/test/results
+# Uncomment to specify the preferred debugger connection transport:
+#debug.transport=dt_socket
+debug.classpath=\
+    ${run.classpath}
+debug.test.classpath=\
+    ${run.test.classpath}
+# This directory is removed when the project is cleaned:
+dist.dir=dist
+dist.jar=${dist.dir}/Invoicex_mercurial.jar
+dist.javadoc.dir=${dist.dir}/javadoc
+endorsed.classpath=
+excludes=
+file.reference.AbsoluteLayout.jar=lib/AbsoluteLayout.jar
+file.reference.activation.jar=lib/email/activation.jar
+file.reference.AppleJavaExtensions.jar=lib/AppleJavaExtensions.jar
+file.reference.asm-attrs.jar=lib/asm-attrs.jar
+file.reference.asm.jar=lib/asm.jar
+file.reference.bcprov-jdk15-139.jar=lib/bcprov-jdk15-139.jar
+file.reference.beansbinding-1.2.1.jar=lib/beansbinding-1.2.1.jar
+file.reference.cglib-2.1.3.jar=lib/cglib-2.1.3.jar
+file.reference.commons-beanutils-1.5.jar=lib/commons-beanutils-1.5.jar
+file.reference.commons-codec-1.3.jar=lib/commons-codec-1.3.jar
+file.reference.commons-collections-2.1.jar=lib/commons-collections-2.1.jar
+file.reference.commons-digester-1.7.jar=lib/commons-digester-1.7.jar
+file.reference.commons-email-1.2.jar=lib/commons-email-1.2.jar
+file.reference.commons-email-1.2.jar-1=lib/email/commons-email-1.2.jar
+file.reference.commons-httpclient-3.1.jar=lib/commons-httpclient-3.1.jar
+file.reference.commons-io-1.3.2.jar=lib/commons-io-1.3.2.jar
+file.reference.commons-javaflow-20060411.jar=lib/commons-javaflow-20060411.jar
+file.reference.commons-lang-2.3.jar=lib/commons-lang-2.3.jar
+file.reference.commons-logging-1.0.2.jar=lib/commons-logging-1.0.2.jar
+file.reference.commons-logging-api-1.0.2.jar=lib/commons-logging-api-1.0.2.jar
+file.reference.commons-net-2.2.jar=lib/commons-net-2.2.jar
+file.reference.dom4j-1.6.1.jar=lib/dom4j-1.6.1.jar
+file.reference.ecj.jar=lib/ecj.jar
+file.reference.forms-1.0.5.jar=lib/forms-1.0.5.jar
+file.reference.groovy-all-1.6.5.jar=lib/groovy-all-1.6.5.jar
+file.reference.hessian-3.1.2.jar=lib/hessian-3.1.2.jar
+file.reference.hibernate3.jar=lib/hibernate3.jar
+file.reference.iText-2.1.0.jar=lib/jasperreports-371/iText-2.1.0.jar
+file.reference.jasperreports-3.7.1.jar=lib/jasperreports-371/jasperreports-3.7.1.jar
+file.reference.jasperreports-fonts-3.6.1.jar=lib/jasperreports-371/jasperreports-fonts-3.6.1.jar
+file.reference.jcommon-1.0.15.jar=lib/jasperreports-371/jcommon-1.0.15.jar
+file.reference.jdic.jar=lib/jdic-20061102-bin-crossplatform/jdic.jar
+file.reference.jdic_stub.jar=lib/jdic-20061102-bin-crossplatform/windows/jdic_stub.jar
+file.reference.jfreechart-1.0.12.jar=lib/jasperreports-371/jfreechart-1.0.12.jar
+file.reference.jgoodies-common-0.9.9.jar=lib/jgoodies-looks-2.4.0b1/lib/jgoodies-common-0.9.9.jar
+file.reference.jgoodies-looks-2.4.0b1_nbproject.jar=lib/jgoodies-looks-2.4.0b1/jgoodies-looks-2.4.0b1_nbproject.jar
+file.reference.jide-oss-2.10.2.jar=lib/jide-oss-2.10.2.jar
+file.reference.jna.jar=lib/jna.jar
+file.reference.jnlp.jar=lib/jnlp.jar
+file.reference.jta.jar=lib/jta.jar
+file.reference.jug-lgpl-2.0.0.jar=lib/jug-lgpl-2.0.0.jar
+file.reference.jxl-2.6.jar=lib/jxl-2.6.jar
+file.reference.log4j-1.2.8.jar=lib/log4j-1.2.8.jar
+file.reference.lucene-core-2.4.0.jar=lib/lucene-core-2.4.0.jar
+file.reference.mail.jar=lib/email/mail.jar
+file.reference.mysql-connector-java-5.1.14-bin.jar=lib/mysql-connector-java-5.1.14-bin.jar
+file.reference.NetComponents.jar=lib/NetComponents.jar
+file.reference.OfficeLnFs_2.7.jar=lib/OfficeLnFs_2.7.jar
+file.reference.ostermillerutils_1_07_00.jar=lib/ostermillerutils_1_07_00.jar
+file.reference.poi-3.6-20091214.jar=lib/poi-3.6-20091214.jar
+file.reference.Renderpack.jar=lib/Renderpack.jar
+file.reference.spring.jar=lib/jasperreports-371/spring.jar
+file.reference.substance-lite.jar=lib/substance-lite.jar
+file.reference.swing-layout-1.0.4.jar=lib/swing-layout-1.0.4.jar
+file.reference.swing-worker-1.1.jar=lib/swing-worker-1.1.jar
+file.reference.swingx-1.0.jar=lib/swingx-1.0.jar
+file.reference.TimingFramework-1.0.jar=lib/TimingFramework-1.0.jar
+includes=**
+jar.compress=true
+javac.classpath=\
+    ${file.reference.AbsoluteLayout.jar}:\
+    ${file.reference.AppleJavaExtensions.jar}:\
+    ${file.reference.asm-attrs.jar}:\
+    ${file.reference.asm.jar}:\
+    ${file.reference.bcprov-jdk15-139.jar}:\
+    ${reference.Invoicex_res.jar}:\
+    ${file.reference.cglib-2.1.3.jar}:\
+    ${file.reference.commons-beanutils-1.5.jar}:\
+    ${file.reference.commons-codec-1.3.jar}:\
+    ${file.reference.commons-collections-2.1.jar}:\
+    ${file.reference.commons-digester-1.7.jar}:\
+    ${file.reference.commons-httpclient-3.1.jar}:\
+    ${file.reference.commons-javaflow-20060411.jar}:\
+    ${file.reference.commons-lang-2.3.jar}:\
+    ${file.reference.commons-logging-1.0.2.jar}:\
+    ${file.reference.commons-logging-api-1.0.2.jar}:\
+    ${file.reference.dom4j-1.6.1.jar}:\
+    ${file.reference.ecj.jar}:\
+    ${file.reference.forms-1.0.5.jar}:\
+    ${file.reference.groovy-all-1.6.5.jar}:\
+    ${file.reference.hessian-3.1.2.jar}:\
+    ${file.reference.hibernate3.jar}:\
+    ${file.reference.jna.jar}:\
+    ${file.reference.jnlp.jar}:\
+    ${file.reference.jta.jar}:\
+    ${file.reference.jug-lgpl-2.0.0.jar}:\
+    ${file.reference.jxl-2.6.jar}:\
+    ${file.reference.log4j-1.2.8.jar}:\
+    ${file.reference.lucene-core-2.4.0.jar}:\
+    ${file.reference.NetComponents.jar}:\
+    ${file.reference.ostermillerutils_1_07_00.jar}:\
+    ${file.reference.Renderpack.jar}:\
+    ${file.reference.substance-lite.jar}:\
+    ${file.reference.swing-worker-1.1.jar}:\
+    ${file.reference.TimingFramework-1.0.jar}:\
+    ${file.reference.jdic.jar}:\
+    ${file.reference.jdic_stub.jar}:\
+    ${reference.commons-tnx.jar}:\
+    ${file.reference.poi-3.6-20091214.jar}:\
+    ${file.reference.swing-layout-1.0.4.jar}:\
+    ${file.reference.beansbinding-1.2.1.jar}:\
+    ${file.reference.mail.jar}:\
+    ${file.reference.activation.jar}:\
+    ${file.reference.commons-email-1.2.jar-1}:\
+    ${file.reference.jgoodies-common-0.9.9.jar}:\
+    ${file.reference.jgoodies-looks-2.4.0b1_nbproject.jar}:\
+    ${file.reference.iText-2.1.0.jar}:\
+    ${file.reference.jasperreports-3.7.1.jar}:\
+    ${file.reference.jcommon-1.0.15.jar}:\
+    ${file.reference.jasperreports-fonts-3.6.1.jar}:\
+    ${file.reference.jfreechart-1.0.12.jar}:\
+    ${file.reference.spring.jar}:\
+    ${file.reference.jide-oss-2.10.2.jar}:\
+    ${file.reference.commons-email-1.2.jar}:\
+    ${file.reference.commons-net-2.2.jar}:\
+    ${file.reference.commons-io-1.3.2.jar}:\
+    ${file.reference.OfficeLnFs_2.7.jar}:\
+    ${file.reference.swingx-1.0.jar}:\
+    ${file.reference.mysql-connector-java-5.1.14-bin.jar}
+# Space-separated list of extra javac options
+javac.compilerargs=-bootclasspath "C:\\Lavori\\tnx\\private\\lib\\jdk1.5\\rt.jar;C:\\Lavori\\tnx\\private\\lib\\jdk1.5\\jce.jar" -extdirs ""
+javac.deprecation=false
+javac.processorpath=\
+    ${javac.classpath}
+javac.source=1.5
+javac.target=1.5
+javac.test.classpath=\
+    ${javac.classpath}:\
+    ${build.classes.dir}
+javac.test.processorpath=\
+    ${javac.test.classpath}
+javadoc.additionalparam=
+javadoc.author=false
+javadoc.encoding=${source.encoding}
+javadoc.noindex=false
+javadoc.nonavbar=false
+javadoc.notree=false
+javadoc.private=false
+javadoc.splitindex=true
+javadoc.use=true
+javadoc.version=false
+javadoc.windowtitle=
+main.class=it.tnx.invoicex.Main
+manifest.file=manifest.mf
+meta.inf.dir=${src.dir}/META-INF
+platform.active=default_platform
+project.commons-tnx=../commons-tnx
+project.Invoicex_res=../Invoicex_res
+reference.commons-tnx.jar=${project.commons-tnx}/dist/commons-tnx.jar
+reference.Invoicex_res.jar=${project.Invoicex_res}/dist/Invoicex_res.jar
+run.classpath=\
+    ${javac.classpath}:\
+    ${build.classes.dir}
+# Space-separated list of JVM arguments used when running the project
+# (you may also define separate properties like run-sys-prop.name=value instead of -Dname=value
+# or test-sys-prop.name=value to set system properties for unit tests):
+run.jvmargs=-Xmx200m
+run.test.classpath=\
+    ${javac.test.classpath}:\
+    ${build.test.classes.dir}
+source.encoding=UTF-8
+src.dir=src
+test.src.dir=test
