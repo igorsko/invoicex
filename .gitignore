@@ -1,1 +1,7 @@
 .class
+.nbattrs
+
+
+build/
+dist/
+nbproject/

@@ -48,7 +48,7 @@ import net.sf.jasperreports.engine.util.JRLoader;
  */
 public class Reports {
     
-    public static String DIR_REPORTS = "reports/";
+    public static String DIR_REPORTS = "reports_/";
     public static String DIR_FATTURE = "fatture/";
     public static String DIR_MAGAZZINO = "magazzino/";
     

@@ -294,6 +294,7 @@ public class JDialogStampaArticoli extends javax.swing.JDialog {
             sql += " a.codice as Codice, ";
             sql += " a.descrizione as Descrizione, ";
             sql += " a.um as 'u.m.', ";
+            sql += " a.pos_mag as 'pos_mag', ";
             sql += " a.codice_fornitore as 'Codice Fornitore', ";
         } else {
             sql += " a.codice as Code, ";

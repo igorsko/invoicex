@@ -930,7 +930,21 @@ public class prnConfermaOrdine {
             tempPdfCell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
 
             datatable.addCell(tempPdfCell);
+            
+            // Igor
+            tempFrase = new Phrase("pos_mag", new Font(Font.HELVETICA, 8, Font.NORMAL));
 
+            tempPdfCell = new Cell(tempFrase);
+
+            tempPdfCell.setBackgroundColor(new Color(255, 255, 240));
+
+            tempPdfCell.setBorderColor(new Color(200, 200, 200));
+
+            tempPdfCell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
+
+            datatable.addCell(tempPdfCell);
+            // end Igor
+            
             tempFrase = new Phrase("u.m.", new Font(Font.HELVETICA, 8, Font.NORMAL));
 
             tempPdfCell = new Cell(tempFrase);
@@ -1087,6 +1101,16 @@ public class prnConfermaOrdine {
 
                 datatable.addCell(tempPdfCell);
 
+                // Igor 
+                tempPdfCell = new Cell(new Phrase(dbUtil.nz(resu.getString("pos_mag"), ""), new Font(Font.HELVETICA, 8, Font.NORMAL)));
+
+                tempPdfCell.setBorderColor(new Color(200, 200, 200));
+
+                tempPdfCell.setBackgroundColor(colore);
+
+                datatable.addCell(tempPdfCell);
+                // end Igor
+                
                 tempPdfCell = new Cell(new Phrase(dbUtil.nz(resu.getString("um"), ""), new Font(Font.HELVETICA, 8, Font.NORMAL)));
 
                 tempPdfCell.setBorderColor(new Color(200, 200, 200));
