@@ -26,7 +26,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-70,0,0,3,71"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-70,0,0,3,107"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -66,126 +66,128 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="texDescrizione" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="texDescrizione" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="labResidua" min="-2" pref="439" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="1"/>
+                                          <Component id="comUm" alignment="0" min="-2" pref="60" max="-2" attributes="1"/>
+                                          <Component id="labNumeroScatole" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="texNumeroScatole" alignment="0" max="32767" attributes="1"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="1"/>
-                                                  <Component id="comUm" alignment="0" min="-2" pref="60" max="-2" attributes="1"/>
-                                                  <Component id="labNumeroScatole" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="texNumeroScatole" alignment="0" max="32767" attributes="1"/>
+                                              <Component id="scatole" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                              <Component id="texQta" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jLabel110" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel114" min="-2" max="-2" attributes="0"/>
+                                          <Component id="texQtaOmaggio" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lab_prezzoivainclusa" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lab_prezzosenzaiva" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="texPrezIvato" min="-2" max="-2" attributes="0"/>
+                                          <Component id="texPrez" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="texPrezNett" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                              <Component id="butCalcolaSconto" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="texScon1" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                                      <Component id="jLabel21" min="-2" pref="12" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="scatole" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="texScon2" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                                      <Component id="texQta" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jLabel22" min="-2" pref="12" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Component id="jLabel110" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel114" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="texQtaOmaggio" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="lab_prezzoivainclusa" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="lab_prezzosenzaiva" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="texPrezIvato" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="texPrez" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="texPrezNett" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="texIva" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                                      <Component id="butCalcolaSconto" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="texScon1" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                                              <Component id="jLabel21" min="-2" pref="12" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="texScon2" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                                              <Component id="jLabel22" min="-2" pref="12" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="texIva" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                                              <Component id="comIva" min="-2" pref="20" max="-2" attributes="0"/>
-                                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                                              <Component id="labPercentualeIva" min="-2" max="-2" attributes="0"/>
-                                                          </Group>
-                                                      </Group>
+                                                      <Component id="comIva" min="-2" pref="20" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Group type="102" attributes="0">
-                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="comArrotondamento" min="-2" pref="47" max="-2" attributes="0"/>
-                                                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                                                              <Component id="comTipoArr" min="-2" pref="63" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <Component id="labArrotondamento" alignment="0" max="32767" attributes="1"/>
-                                                      </Group>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="labTotArr" min="-2" max="-2" attributes="1"/>
-                                                              <EmptySpace max="-2" attributes="0"/>
-                                                              <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="texTotArrotondato" min="-2" pref="54" max="-2" attributes="1"/>
-                                                              <EmptySpace max="-2" attributes="0"/>
-                                                              <Component id="texProvvigione" min="-2" pref="56" max="-2" attributes="0"/>
-                                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                                              <Component id="jLabel24" min="-2" pref="12" max="-2" attributes="0"/>
-                                                          </Group>
-                                                      </Group>
-                                                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="labIvaDeducibile" min="-2" max="-2" attributes="1"/>
-                                                          <Group type="102" attributes="0">
-                                                              <Component id="texIvaDeducibile" min="-2" max="-2" attributes="1"/>
-                                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                                              <Component id="labPercentualeIvaDeducibile" min="-2" max="-2" attributes="0"/>
-                                                          </Group>
-                                                      </Group>
-                                                  </Group>
+                                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel111" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="texPosMag" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="cheIsDescrizione" min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="comArrotondamento" min="-2" pref="47" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                                      <Component id="comTipoArr" min="-2" pref="63" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="labArrotondamento" alignment="0" max="32767" attributes="1"/>
+                                              </Group>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="cheUpdateListino" min="-2" max="-2" attributes="1"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="consegna_prevista" min="-2" max="-2" attributes="1"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="labTotArr" min="-2" max="-2" attributes="1"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="texTotArrotondato" min="-2" pref="54" max="-2" attributes="1"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="texProvvigione" min="-2" pref="56" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                                      <Component id="jLabel24" min="-2" pref="12" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="labIvaDeducibile" min="-2" max="-2" attributes="1"/>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="texIvaDeducibile" min="-2" max="-2" attributes="1"/>
+                                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                                      <Component id="labPercentualeIvaDeducibile" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
                                           </Group>
                                       </Group>
+                                      <EmptySpace pref="14" max="32767" attributes="0"/>
+                                      <Component id="panLibero" min="-2" pref="152" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="panLibero" max="32767" attributes="0"/>
+                                      <Component id="labPercentualeIva" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="cheIsDescrizione" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cheUpdateListino" min="-2" max="-2" attributes="1"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="consegna_prevista" min="-2" max="-2" attributes="1"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabel2" alignment="1" max="32767" attributes="0"/>
@@ -264,12 +266,12 @@
                       </Group>
                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="panLibero2" pref="122" max="32767" attributes="0"/>
-                          <Component id="texDescrizione" max="32767" attributes="0"/>
+                          <Component id="panLibero2" pref="121" max="32767" attributes="0"/>
+                          <Component id="texDescrizione" pref="121" max="32767" attributes="0"/>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel17" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
                                   <Component id="jLabel110" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -278,6 +280,7 @@
                                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lab_prezzosenzaiva" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel111" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
@@ -295,6 +298,7 @@
                                       <Component id="texIva" linkSize="3" alignment="3" min="-2" max="-2" attributes="1"/>
                                       <Component id="comIva" linkSize="3" alignment="3" min="-2" max="-2" attributes="1"/>
                                       <Component id="labPercentualeIva" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="texPosMag" alignment="3" min="-2" max="-2" attributes="1"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
@@ -968,6 +972,26 @@
                 <Property name="text" type="java.lang.String" value="Consegna prevista"/>
               </Properties>
             </Component>
+            <Component class="tnxbeans.tnxTextField" name="texPosMag">
+              <Properties>
+                <Property name="columns" type="int" value="6"/>
+                <Property name="dbDecimaliMax" type="java.lang.Integer" value="5"/>
+                <Property name="dbDescCampo" type="java.lang.String" value=""/>
+                <Property name="dbNomeCampo" type="java.lang.String" value="pos_mag"/>
+                <Property name="dbTipoCampo" type="java.lang.String" value="numerico"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="texPosMagActionPerformed"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="texPosMagFocusLost"/>
+                <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="texPosMagInputMethodTextChanged"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="texPosMagKeyReleased"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel111">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Posizione magazzino"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel2">
@@ -990,7 +1014,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="307" max="32767" attributes="0"/>
+                          <EmptySpace pref="343" max="32767" attributes="0"/>
                           <Component id="butAnnulla" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="butSave" min="-2" max="-2" attributes="0"/>

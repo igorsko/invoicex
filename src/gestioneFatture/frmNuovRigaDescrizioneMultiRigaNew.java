@@ -1171,6 +1171,8 @@ public class frmNuovRigaDescrizioneMultiRigaNew
         panLibero2 = new javax.swing.JPanel();
         consegna_prevista = new org.jdesktop.swingx.JXDatePicker();
         jLabel5 = new javax.swing.JLabel();
+        texPosMag = new tnxbeans.tnxTextField();
+        jLabel111 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         butAnnulla = new javax.swing.JButton();
@@ -1713,6 +1715,36 @@ public class frmNuovRigaDescrizioneMultiRigaNew
 
         jLabel5.setText("Consegna prevista");
 
+        texPosMag.setColumns(6);
+        texPosMag.setDbDecimaliMax(new java.lang.Integer(5));
+        texPosMag.setDbDescCampo("");
+        texPosMag.setDbNomeCampo("pos_mag");
+        texPosMag.setDbTipoCampo("numerico");
+        texPosMag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                texPosMagActionPerformed(evt);
+            }
+        });
+        texPosMag.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                texPosMagFocusLost(evt);
+            }
+        });
+        texPosMag.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                texPosMagInputMethodTextChanged(evt);
+            }
+        });
+        texPosMag.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                texPosMagKeyReleased(evt);
+            }
+        });
+
+        jLabel111.setText("Posizione magazzino");
+
         org.jdesktop.layout.GroupLayout datiLayout = new org.jdesktop.layout.GroupLayout(dati);
         dati.setLayout(datiLayout);
         datiLayout.setHorizontalGroup(
@@ -1722,101 +1754,104 @@ public class frmNuovRigaDescrizioneMultiRigaNew
                 .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(datiLayout.createSequentialGroup()
                         .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(texDescrizione, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .add(texDescrizione, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .add(datiLayout.createSequentialGroup()
                                 .add(jLabel20)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .add(labResidua, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 439, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                             .add(datiLayout.createSequentialGroup()
+                                .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                                    .add(jLabel17)
+                                    .add(comUm, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 60, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(labNumeroScatole)
+                                    .add(texNumeroScatole, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(datiLayout.createSequentialGroup()
-                                        .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                                            .add(jLabel17)
-                                            .add(comUm, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 60, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                            .add(labNumeroScatole)
-                                            .add(texNumeroScatole, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                        .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                            .add(datiLayout.createSequentialGroup()
-                                                .add(scatole)
-                                                .add(1, 1, 1)
-                                                .add(texQta, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                            .add(jLabel110)
-                                            .add(jLabel114)
-                                            .add(texQtaOmaggio, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                        .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                            .add(lab_prezzoivainclusa, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                            .add(lab_prezzosenzaiva, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                            .add(texPrezIvato, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                            .add(texPrez, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                        .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                            .add(datiLayout.createSequentialGroup()
-                                                .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                                    .add(jLabel4)
-                                                    .add(texPrezNett, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                                .add(1, 1, 1)
-                                                .add(butCalcolaSconto)
-                                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                                                .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                                    .add(datiLayout.createSequentialGroup()
-                                                        .add(texScon1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                                        .add(1, 1, 1)
-                                                        .add(jLabel21, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 12, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                                    .add(jLabel18))
-                                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                                .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                                    .add(datiLayout.createSequentialGroup()
-                                                        .add(texScon2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                                        .add(1, 1, 1)
-                                                        .add(jLabel22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 12, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                                    .add(jLabel19))
-                                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                                .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                                    .add(jLabel1)
-                                                    .add(datiLayout.createSequentialGroup()
-                                                        .add(texIva, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                                        .add(1, 1, 1)
-                                                        .add(comIva, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                                        .add(1, 1, 1)
-                                                        .add(labPercentualeIva))))
-                                            .add(datiLayout.createSequentialGroup()
-                                                .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                                                    .add(datiLayout.createSequentialGroup()
-                                                        .add(comArrotondamento, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 47, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                                        .add(comTipoArr, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 63, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                                    .add(labArrotondamento, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                                .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                                    .add(datiLayout.createSequentialGroup()
-                                                        .add(labTotArr)
-                                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                                        .add(jLabel23))
-                                                    .add(datiLayout.createSequentialGroup()
-                                                        .add(texTotArrotondato, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 54, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                                        .add(texProvvigione, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 56, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                                        .add(1, 1, 1)
-                                                        .add(jLabel24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 12, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                                                .add(4, 4, 4)
-                                                .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                                    .add(labIvaDeducibile)
-                                                    .add(datiLayout.createSequentialGroup()
-                                                        .add(texIvaDeducibile, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                                        .add(1, 1, 1)
-                                                        .add(labPercentualeIvaDeducibile))))))
-                                    .add(datiLayout.createSequentialGroup()
-                                        .add(cheIsDescrizione, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                        .add(cheUpdateListino)
-                                        .add(18, 18, 18)
-                                        .add(jLabel5)
-                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                        .add(consegna_prevista, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                                        .add(scatole)
+                                        .add(1, 1, 1)
+                                        .add(texQta, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                    .add(jLabel110)
+                                    .add(jLabel114)
+                                    .add(texQtaOmaggio, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(panLibero, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(lab_prezzoivainclusa, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(lab_prezzosenzaiva, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(texPrezIvato, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(texPrez, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(datiLayout.createSequentialGroup()
+                                        .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                            .add(jLabel4)
+                                            .add(texPrezNett, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                        .add(1, 1, 1)
+                                        .add(butCalcolaSconto)
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                                        .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                            .add(datiLayout.createSequentialGroup()
+                                                .add(texScon1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                                .add(1, 1, 1)
+                                                .add(jLabel21, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 12, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                            .add(jLabel18))
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                        .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                            .add(datiLayout.createSequentialGroup()
+                                                .add(texScon2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                                .add(1, 1, 1)
+                                                .add(jLabel22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 12, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                            .add(jLabel19))
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                        .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                            .add(datiLayout.createSequentialGroup()
+                                                .add(texIva, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                                .add(1, 1, 1)
+                                                .add(comIva, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                            .add(jLabel1))
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                                        .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                            .add(jLabel111)
+                                            .add(texPosMag, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                                    .add(datiLayout.createSequentialGroup()
+                                        .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                                            .add(datiLayout.createSequentialGroup()
+                                                .add(comArrotondamento, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 47, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                                .add(comTipoArr, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 63, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                            .add(labArrotondamento, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                        .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                            .add(datiLayout.createSequentialGroup()
+                                                .add(labTotArr)
+                                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                                .add(jLabel23))
+                                            .add(datiLayout.createSequentialGroup()
+                                                .add(texTotArrotondato, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 54, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                                .add(texProvvigione, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 56, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                                .add(1, 1, 1)
+                                                .add(jLabel24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 12, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                                        .add(4, 4, 4)
+                                        .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                            .add(labIvaDeducibile)
+                                            .add(datiLayout.createSequentialGroup()
+                                                .add(texIvaDeducibile, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                                .add(1, 1, 1)
+                                                .add(labPercentualeIvaDeducibile)))))
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 14, Short.MAX_VALUE)
+                                .add(panLibero, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 152, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(labPercentualeIva))
+                            .add(datiLayout.createSequentialGroup()
+                                .add(cheIsDescrizione, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(cheUpdateListino)
+                                .add(18, 18, 18)
+                                .add(jLabel5)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(consegna_prevista, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(0, 0, Short.MAX_VALUE))
                             .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -1878,11 +1913,11 @@ public class frmNuovRigaDescrizioneMultiRigaNew
                     .add(jLabel20))
                 .add(1, 1, 1)
                 .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(panLibero2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                    .add(texDescrizione, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(panLibero2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                    .add(texDescrizione, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(datiLayout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabel17, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 15, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(jLabel110)
@@ -1890,7 +1925,8 @@ public class frmNuovRigaDescrizioneMultiRigaNew
                             .add(jLabel19)
                             .add(jLabel1)
                             .add(lab_prezzosenzaiva, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jLabel4))
+                            .add(jLabel4)
+                            .add(jLabel111))
                         .add(1, 1, 1)
                         .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                             .add(scatole)
@@ -1906,7 +1942,8 @@ public class frmNuovRigaDescrizioneMultiRigaNew
                                 .add(jLabel22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 15, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                 .add(texIva, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                 .add(comIva)
-                                .add(labPercentualeIva)))
+                                .add(labPercentualeIva)
+                                .add(texPosMag, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                         .add(5, 5, 5)
                         .add(datiLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(datiLayout.createSequentialGroup()
@@ -1983,7 +2020,7 @@ public class frmNuovRigaDescrizioneMultiRigaNew
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(307, Short.MAX_VALUE)
+                .addContainerGap(343, Short.MAX_VALUE)
                 .add(butAnnulla)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(butSave)
@@ -3693,6 +3730,22 @@ private void lab_prezzoivainclusaActionPerformed(java.awt.event.ActionEvent evt)
         // TODO add your handling code here:
     }//GEN-LAST:event_texIvaActionPerformed
 
+    private void texPosMagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texPosMagActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_texPosMagActionPerformed
+
+    private void texPosMagFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_texPosMagFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_texPosMagFocusLost
+
+    private void texPosMagInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_texPosMagInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_texPosMagInputMethodTextChanged
+
+    private void texPosMagKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_texPosMagKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_texPosMagKeyReleased
+
     public void aggiornaTotale() {
         if (caricamento) {
             return;
@@ -3780,6 +3833,7 @@ private void lab_prezzoivainclusaActionPerformed(java.awt.event.ActionEvent evt)
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel110;
+    private javax.swing.JLabel jLabel111;
     private javax.swing.JLabel jLabel114;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
@@ -3821,6 +3875,7 @@ private void lab_prezzoivainclusaActionPerformed(java.awt.event.ActionEvent evt)
     private tnxbeans.tnxTextField texIvaDeducibile;
     private tnxbeans.tnxTextField texNume;
     private tnxbeans.tnxTextField texNumeroScatole;
+    private tnxbeans.tnxTextField texPosMag;
     private tnxbeans.tnxTextField texPrez;
     private tnxbeans.tnxTextField texPrezIvato;
     private javax.swing.JTextField texPrezNett;
