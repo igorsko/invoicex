@@ -978,7 +978,7 @@
                 <Property name="dbDecimaliMax" type="java.lang.Integer" value="5"/>
                 <Property name="dbDescCampo" type="java.lang.String" value=""/>
                 <Property name="dbNomeCampo" type="java.lang.String" value="pos_mag"/>
-                <Property name="dbTipoCampo" type="java.lang.String" value="numerico"/>
+                <Property name="dbTipoCampo" type="java.lang.String" value=""/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="texPosMagActionPerformed"/>

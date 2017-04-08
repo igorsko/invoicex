@@ -1719,7 +1719,7 @@ public class frmNuovRigaDescrizioneMultiRigaNew
         texPosMag.setDbDecimaliMax(new java.lang.Integer(5));
         texPosMag.setDbDescCampo("");
         texPosMag.setDbNomeCampo("pos_mag");
-        texPosMag.setDbTipoCampo("numerico");
+        texPosMag.setDbTipoCampo("");
         texPosMag.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 texPosMagActionPerformed(evt);
@@ -4202,6 +4202,7 @@ private void lab_prezzoivainclusaActionPerformed(java.awt.event.ActionEvent evt)
 
                 if (temp.next() == true) {
 
+                    this.texPosMag.setText(Db.nz(temp.getString("posizione_magazzino"), ""));
                     peso_kg_collo = temp.getDouble("peso_kg_collo");
                     servizio = CastUtils.toBoolean(temp.getString("servizio"));
                     non_applicare_percentuale = CastUtils.toBoolean(temp.getString("non_applicare_percentuale"));
