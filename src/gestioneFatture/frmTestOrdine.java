@@ -2279,7 +2279,7 @@ public class frmTestOrdine
 
         texSwift.setToolTipText("");
         texSwift.setDbDescCampo("");
-        texSwift.setDbNomeCampo("banca_iban");
+        texSwift.setDbNomeCampo("swift");
         texSwift.setDbTipoCampo("");
         texSwift.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

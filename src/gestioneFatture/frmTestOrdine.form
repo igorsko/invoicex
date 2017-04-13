@@ -1787,7 +1787,7 @@
                           <Properties>
                             <Property name="toolTipText" type="java.lang.String" value=""/>
                             <Property name="dbDescCampo" type="java.lang.String" value=""/>
-                            <Property name="dbNomeCampo" type="java.lang.String" value="banca_iban"/>
+                            <Property name="dbNomeCampo" type="java.lang.String" value="swift"/>
                             <Property name="dbTipoCampo" type="java.lang.String" value=""/>
                           </Properties>
                           <Events>
