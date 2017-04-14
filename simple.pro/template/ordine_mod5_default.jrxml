@@ -486,7 +486,7 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{int_dest_2}]]></textFieldExpression>
 			</textField>
 			<frame>
-				<reportElement positionType="Float" x="25" y="262" width="539" height="41" isRemoveLineWhenBlank="true">
+				<reportElement positionType="Float" x="25" y="262" width="539" height="45" isRemoveLineWhenBlank="true">
 					<printWhenExpression><![CDATA[new Boolean(($F{s_banca_sede} != null && $F{s_banca_sede}.length() > 0) || ($F{s_banca_agenzia} != null && $F{s_banca_agenzia}.length() > 0))]]></printWhenExpression>
 				</reportElement>
 				<textField pattern="" isBlankWhenNull="false">
@@ -518,7 +518,7 @@
 					<textFieldExpression class="java.lang.String"><![CDATA[$F{s_banca_sede}]]></textFieldExpression>
 				</textField>
 				<line>
-					<reportElement key="line-13" mode="Transparent" x="120" y="0" width="1" height="40" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+					<reportElement key="line-13" mode="Transparent" x="120" y="0" width="1" height="45" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
 					<graphicElement fill="Solid">
 						<pen lineWidth="0.5" lineStyle="Solid"/>
 					</graphicElement>
