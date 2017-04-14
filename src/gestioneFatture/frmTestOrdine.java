@@ -1359,6 +1359,8 @@ public class frmTestOrdine
         labProvvigione = new javax.swing.JLabel();
         texProvvigione = new tnxbeans.tnxTextField();
         labPercentoProvvigione = new javax.swing.JLabel();
+        texSwift = new tnxbeans.tnxTextField();
+        jLabel26 = new javax.swing.JLabel();
         labRiferimento = new javax.swing.JLabel();
         texConsegna = new tnxbeans.tnxTextField();
         textTipoSnj = new tnxbeans.tnxTextField();
@@ -2215,8 +2217,8 @@ public class frmTestOrdine
         dati_altri1.add(labBancCab, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 235, 20));
 
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel23.setText("IBAN");
-        dati_altri1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 90, 75, 20));
+        jLabel23.setText("SWIFT");
+        dati_altri1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 110, 75, 20));
 
         texBancIban.setToolTipText("");
         texBancIban.setDbDescCampo("");
@@ -2236,7 +2238,7 @@ public class frmTestOrdine
 
         labAgente.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         labAgente.setText("Agente");
-        dati_altri1.add(labAgente, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 115, 75, 20));
+        dati_altri1.add(labAgente, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 140, 75, 20));
 
         comAgente.setToolTipText("");
         comAgente.setDbDescCampo("");
@@ -2253,10 +2255,10 @@ public class frmTestOrdine
                 comAgenteFocusLost(evt);
             }
         });
-        dati_altri1.add(comAgente, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 115, 175, 20));
+        dati_altri1.add(comAgente, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 140, 175, 20));
 
         labProvvigione.setText("Provvigione");
-        dati_altri1.add(labProvvigione, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 115, 80, 20));
+        dati_altri1.add(labProvvigione, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 140, 80, 20));
 
         texProvvigione.setToolTipText("");
         texProvvigione.setDbDescCampo("");
@@ -2270,12 +2272,32 @@ public class frmTestOrdine
                 texProvvigioneFocusLost(evt);
             }
         });
-        dati_altri1.add(texProvvigione, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 115, 35, 20));
+        dati_altri1.add(texProvvigione, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 140, 35, 20));
 
         labPercentoProvvigione.setText("%");
-        dati_altri1.add(labPercentoProvvigione, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 115, 15, 20));
+        dati_altri1.add(labPercentoProvvigione, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 140, 15, 20));
 
-        dati.add(dati_altri1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 165, 415, -1));
+        texSwift.setToolTipText("");
+        texSwift.setDbDescCampo("");
+        texSwift.setDbNomeCampo("swift");
+        texSwift.setDbTipoCampo("");
+        texSwift.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                texSwiftActionPerformed(evt);
+            }
+        });
+        texSwift.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                texSwiftFocusLost(evt);
+            }
+        });
+        dati_altri1.add(texSwift, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 110, 80, 20));
+
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel26.setText("IBAN");
+        dati_altri1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 90, 75, 20));
+
+        dati.add(dati_altri1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 165, 415, 160));
 
         labRiferimento.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         labRiferimento.setText("Consegna");
@@ -2317,7 +2339,7 @@ public class frmTestOrdine
 
         labModConsegna.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         labModConsegna.setText("modalità di consegna");
-        dati.add(labModConsegna, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 305, 120, 20));
+        dati.add(labModConsegna, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 120, 20));
 
         comConsegna.setDbDescCampo("Modalità di consegna");
         comConsegna.setDbNomeCampo("modalita_consegna");
@@ -2328,7 +2350,7 @@ public class frmTestOrdine
                 comConsegnaActionPerformed(evt);
             }
         });
-        dati.add(comConsegna, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 305, 120, -1));
+        dati.add(comConsegna, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 330, 120, -1));
 
         comScarico.setDbDescCampo("Modalità di scarico");
         comScarico.setDbNomeCampo("modalita_scarico");
@@ -2339,11 +2361,11 @@ public class frmTestOrdine
                 comScaricoActionPerformed(evt);
             }
         });
-        dati.add(comScarico, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 305, -1, -1));
+        dati.add(comScarico, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, -1, -1));
 
         labModScarico.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         labModScarico.setText("scarico");
-        dati.add(labModScarico, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 304, 75, 20));
+        dati.add(labModScarico, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 75, 20));
         dati.add(texCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 20, 190, 20));
 
         apriclienti.addActionListener(new java.awt.event.ActionListener() {
@@ -2622,7 +2644,7 @@ public class frmTestOrdine
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(texTota, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel2))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         org.jdesktop.layout.GroupLayout datiRigheLayout = new org.jdesktop.layout.GroupLayout(datiRighe);
@@ -2630,7 +2652,7 @@ public class frmTestOrdine
         datiRigheLayout.setHorizontalGroup(
             datiRigheLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(datiRigheLayout.createSequentialGroup()
-                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
                 .add(0, 0, 0)
                 .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 914, Short.MAX_VALUE)
@@ -3026,9 +3048,14 @@ public class frmTestOrdine
         coords.setField_texBancCab(this.texBancCab);
         coords.setField_labBancCab(this.labBancCab);
 
-        frmListCoorBanc frm = new frmListCoorBanc(coords);
+//        frmListCoorBanc frm = new frmListCoorBanc(coords);
 
-        main.getPadre().openFrame(frm, 700, 500, 150, 50);
+//        main.getPadre().openFrame(frm, 700, 500, 150, 50);
+        coords.setField_texIban(this.texBancIban);
+        coords.setField_texSwift(this.texSwift);
+        
+        frmDatiAzieBanc frmcca = new frmDatiAzieBanc(coords);
+        main.getPadre().openFrame(frmcca, 700, 500, 150, 50);
     }//GEN-LAST:event_butCoorActionPerformed
 
     private void comClieItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comClieItemStateChanged
@@ -4429,6 +4456,14 @@ private void butImportRigheProskinActionPerformed(java.awt.event.ActionEvent evt
         butStampaActionPerformed(new ActionEvent(this, 0, "pdf"));
     }//GEN-LAST:event_butPdfActionPerformed
 
+    private void texSwiftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texSwiftActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_texSwiftActionPerformed
+
+    private void texSwiftFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_texSwiftFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_texSwiftFocusLost
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton apriclienti;
     private javax.swing.JButton butAddClie;
@@ -4486,6 +4521,7 @@ private void butImportRigheProskinActionPerformed(java.awt.event.ActionEvent evt
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
@@ -4582,6 +4618,7 @@ private void butImportRigheProskinActionPerformed(java.awt.event.ActionEvent evt
     public tnxbeans.tnxTextField texSpeseTrasporto;
     private tnxbeans.tnxTextField texStat;
     private tnxbeans.tnxTextField texStatoOrdine;
+    private tnxbeans.tnxTextField texSwift;
     private tnxbeans.tnxTextField texTipoOrdine;
     public tnxbeans.tnxTextField texTota;
     private tnxbeans.tnxTextField texTota1;

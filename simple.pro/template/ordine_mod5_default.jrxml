@@ -1,0 +1,1669 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ordine_default" pageWidth="595" pageHeight="842" whenNoDataType="BlankPage" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<property name="ireport.zoom" value="4.0"/>
+	<property name="ireport.x" value="42"/>
+	<property name="ireport.y" value="1004"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<style name="variabili_testa_1" isDefault="false" fontSize="9"/>
+	<style name="etichette_testa_1" isDefault="false" fontSize="9"/>
+	<style name="variabili_corpo_1" isDefault="false" fontSize="9"/>
+	<style name="etichette_piede_1" isDefault="false" fontSize="9"/>
+	<style name="variabili_piede_1" isDefault="false" fontSize="9"/>
+	<parameter name="keyNumero" class="java.lang.Integer" isForPrompting="false"/>
+	<parameter name="keySerie" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="keyAnno" class="java.lang.Integer" isForPrompting="false"/>
+	<parameter name="stampaPivaSotto" class="java.lang.Boolean"/>
+	<parameter name="e_DATA" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["DATA"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="e_ORDINE" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["DATA"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="e_CONFERMA_ORDINE" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["DATA"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="e_PREVENTIVO" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["DATA"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="e_note" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["DATA"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="e_corpo.codice" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="e_Descrizione" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="e_pos_mag" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="e_u.m." class="java.lang.String" isForPrompting="false"/>
+	<parameter name="e_quantita" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="e_prezzo" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="e_Importo" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="e_Iva" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="e_Sconti" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="e_continua" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="e_Vostro_riferimento" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["DATA"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="e_Pagamento" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="e_banca_appoggio" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="e_Spese_di_trasporto" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="e_Spese_di_incasso" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="e_DettaglioIVA" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="e_Codice" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="e_Imponibile" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="e_%_IVA" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="e_Imposta" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="e_TOTALE_IMPONIBILE" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="e_TOTALE_IVA" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="e_TOTALE" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="e_Consegna" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="timbro_e_firma" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select test_fatt.*,righ_fatt.*,clie_forn.*,clie_forn_dest.*
+ from ((test_fatt left join righ_fatt on test_fatt.serie = righ_fatt.serie and test_fatt.numero = righ_fatt.numero)
+ left join clie_forn on test_fatt.cliente = clie_forn.codice)
+ left join clie_forn_dest on test_fatt.cliente = clie_forn_dest.codice_cliente and test_fatt.cliente_destinazione = clie_forn_dest.codice
+ where test_fatt.serie = ''
+ and test_fatt.numero = 1
+ and test_fatt.anno = 2005
+ and righ_fatt.anno = 2005
+ order by righ_fatt.riga]]>
+	</queryString>
+	<field name="serie" class="java.lang.String"/>
+	<field name="numero" class="java.lang.Integer"/>
+	<field name="anno" class="java.lang.Integer"/>
+	<field name="cliente" class="java.lang.Integer"/>
+	<field name="cliente_destinazione" class="java.lang.Integer"/>
+	<field name="data" class="java.util.Date"/>
+	<field name="pagamento" class="java.lang.String"/>
+	<field name="banca_abi" class="java.lang.String"/>
+	<field name="banca_cab" class="java.lang.String"/>
+	<field name="banca_cc" class="java.lang.String"/>
+	<field name="spese_varie" class="java.lang.Double"/>
+	<field name="note" class="java.lang.String"/>
+	<field name="note_testa" class="java.lang.String"/>
+	<field name="note_corpo" class="java.lang.String"/>
+	<field name="note_piede" class="java.lang.String"/>
+	<field name="totale_imponibile" class="java.lang.Double"/>
+	<field name="totale_iva" class="java.lang.Double"/>
+	<field name="totale" class="java.lang.Double"/>
+	<field name="sconto1" class="java.lang.Double"/>
+	<field name="sconto2" class="java.lang.Double"/>
+	<field name="riferimento" class="java.lang.String"/>
+	<field name="sconto3" class="java.lang.Double"/>
+	<field name="stato" class="java.lang.String"/>
+	<field name="codice_listino" class="java.lang.Byte"/>
+	<field name="stampato" class="java.sql.Timestamp"/>
+	<field name="spese_trasporto" class="java.lang.Double"/>
+	<field name="spese_incasso" class="java.lang.Double"/>
+	<field name="dest_ragione_sociale" class="java.lang.String"/>
+	<field name="dest_indirizzo" class="java.lang.String"/>
+	<field name="dest_cap" class="java.lang.String"/>
+	<field name="dest_localita" class="java.lang.String"/>
+	<field name="dest_provincia" class="java.lang.String"/>
+	<field name="dest_telefono" class="java.lang.String"/>
+	<field name="dest_cellulare" class="java.lang.String"/>
+	<field name="tipo_fattura" class="java.lang.Byte"/>
+	<field name="aspetto_esteriore_beni" class="java.lang.String"/>
+	<field name="numero_colli" class="java.lang.String"/>
+	<field name="peso_lordo" class="java.lang.String"/>
+	<field name="peso_netto" class="java.lang.String"/>
+	<field name="vettore1" class="java.lang.String"/>
+	<field name="porto" class="java.lang.String"/>
+	<field name="causale_trasporto" class="java.lang.String"/>
+	<field name="mezzo_consegna" class="java.lang.String"/>
+	<field name="opzione_riba_dest_diversa" class="java.lang.String"/>
+	<field name="note_pagamento" class="java.lang.String"/>
+	<field name="agente_codice" class="java.lang.Integer"/>
+	<field name="agente_percentuale" class="java.lang.Double"/>
+	<field name="giorno_pagamento" class="java.lang.Byte"/>
+	<field name="riga" class="java.lang.Integer"/>
+	<field name="codice_articolo" class="java.lang.String"/>
+	<field name="descrizione" class="java.lang.String"/>
+	<field name="pos_mag" class="java.lang.String"/>
+	<field name="um" class="java.lang.String"/>
+	<field name="quantita" class="java.lang.Double"/>
+	<field name="prezzo" class="java.lang.Double"/>
+	<field name="iva" class="java.lang.Double"/>
+	<field name="riga_speciale" class="java.lang.String"/>
+	<field name="descrizione2" class="java.lang.String"/>
+	<field name="codice" class="java.lang.Integer"/>
+	<field name="tipo" class="java.lang.String"/>
+	<field name="ragione_sociale" class="java.lang.String"/>
+	<field name="piva_cfiscale" class="java.lang.String"/>
+	<field name="indirizzo" class="java.lang.String"/>
+	<field name="cap" class="java.lang.String"/>
+	<field name="localita" class="java.lang.String"/>
+	<field name="provincia" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<field name="cellulare" class="java.lang.String"/>
+	<field name="fax" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="web" class="java.lang.String"/>
+	<field name="persona_riferimento" class="java.lang.String"/>
+	<field name="telefono_riferimento" class="java.lang.String"/>
+	<field name="cfiscale" class="java.lang.String"/>
+	<field name="cantiere_indirizzo" class="java.lang.String"/>
+	<field name="cantiere_cap" class="java.lang.String"/>
+	<field name="cantiere_localita" class="java.lang.String"/>
+	<field name="cantiere_provincia" class="java.lang.String"/>
+	<field name="finanziamento" class="java.lang.String"/>
+	<field name="documenti_iva_agevolata" class="java.lang.String"/>
+	<field name="aliquota" class="java.lang.String"/>
+	<field name="cantiere_nome" class="java.lang.String"/>
+	<field name="paese" class="java.lang.String"/>
+	<field name="agente" class="java.lang.Integer"/>
+	<field name="codice_cliente" class="java.lang.Integer"/>
+	<field name="cap_loc_prov" class="java.lang.String"/>
+	<field name="recapito" class="java.lang.String"/>
+	<field name="numero_fattura" class="java.lang.String"/>
+	<field name="sconti" class="java.lang.String"/>
+	<field name="s_quantita" class="java.lang.String"/>
+	<field name="s_prezzo" class="java.lang.String"/>
+	<field name="s_importo" class="java.lang.String"/>
+	<field name="s_iva" class="java.lang.String"/>
+	<field name="messaggio" class="java.lang.String"/>
+	<field name="s_spese_trasporto" class="java.lang.String"/>
+	<field name="s_spese_incasso" class="java.lang.String"/>
+	<field name="s_banca_sede" class="java.lang.String"/>
+	<field name="s_banca_agenzia" class="java.lang.String"/>
+	<field name="iva_codice_1" class="java.lang.String"/>
+	<field name="iva_desc_1" class="java.lang.String"/>
+	<field name="iva_imp_1" class="java.lang.String"/>
+	<field name="iva_perc_1" class="java.lang.String"/>
+	<field name="iva_imposta_1" class="java.lang.String"/>
+	<field name="iva_codice_2" class="java.lang.String"/>
+	<field name="iva_desc_2" class="java.lang.String"/>
+	<field name="iva_imp_2" class="java.lang.String"/>
+	<field name="iva_perc_2" class="java.lang.String"/>
+	<field name="iva_imposta_2" class="java.lang.String"/>
+	<field name="iva_codice_3" class="java.lang.String"/>
+	<field name="iva_desc_3" class="java.lang.String"/>
+	<field name="iva_imp_3" class="java.lang.String"/>
+	<field name="iva_perc_3" class="java.lang.String"/>
+	<field name="iva_imposta_3" class="java.lang.String"/>
+	<field name="iva_codice_4" class="java.lang.String"/>
+	<field name="iva_desc_4" class="java.lang.String"/>
+	<field name="iva_imp_4" class="java.lang.String"/>
+	<field name="iva_perc_4" class="java.lang.String"/>
+	<field name="iva_imposta_4" class="java.lang.String"/>
+	<field name="scadenze_data_1" class="java.lang.String"/>
+	<field name="scadenze_data_2" class="java.lang.String"/>
+	<field name="scadenze_data_3" class="java.lang.String"/>
+	<field name="scadenze_data_4" class="java.lang.String"/>
+	<field name="scadenze_data_5" class="java.lang.String"/>
+	<field name="scadenze_data_6" class="java.lang.String"/>
+	<field name="scadenze_importo_1" class="java.lang.String"/>
+	<field name="scadenze_importo_2" class="java.lang.String"/>
+	<field name="scadenze_importo_3" class="java.lang.String"/>
+	<field name="scadenze_importo_4" class="java.lang.String"/>
+	<field name="scadenze_importo_5" class="java.lang.String"/>
+	<field name="scadenze_importo_6" class="java.lang.String"/>
+	<field name="s_totale_imponibile" class="java.lang.String"/>
+	<field name="s_totale_iva" class="java.lang.String"/>
+	<field name="s_totale" class="java.lang.String"/>
+	<field name="file_logo" class="java.lang.String"/>
+	<field name="file_logo_input" class="java.io.InputStream"/>
+	<field name="s_sconti" class="java.lang.String"/>
+	<field name="intestazione6" class="java.lang.String"/>
+	<field name="intestazione5" class="java.lang.String"/>
+	<field name="intestazione4" class="java.lang.String"/>
+	<field name="intestazione3" class="java.lang.String"/>
+	<field name="intestazione2" class="java.lang.String"/>
+	<field name="intestazione1" class="java.lang.String"/>
+	<field name="s_banca_iban" class="java.lang.String"/>
+	<field name="s_banca_swift" class="java.lang.String"/>
+	<field name="piva_cfiscale_desc" class="java.lang.String"/>
+	<field name="file_sfondo_input" class="java.io.InputStream"/>
+	<field name="stato_ordine" class="java.lang.String"/>
+	<field name="ragione_sociale1" class="java.lang.String"/>
+	<field name="indirizzo1" class="java.lang.String"/>
+	<field name="cap_loc_prov1" class="java.lang.String"/>
+	<field name="piva_cfiscale_desc1" class="java.lang.String"/>
+	<field name="recapito1" class="java.lang.String"/>
+	<field name="ragione_sociale2" class="java.lang.String"/>
+	<field name="indirizzo2" class="java.lang.String"/>
+	<field name="cap_loc_prov2" class="java.lang.String"/>
+	<field name="piva_cfiscale_desc2" class="java.lang.String"/>
+	<field name="recapito2" class="java.lang.String"/>
+	<field name="stampa_dest_div" class="java.lang.Boolean"/>
+	<field name="etichetta_int1" class="java.lang.String"/>
+	<field name="etichetta_int2" class="java.lang.String"/>
+	<field name="acquisto" class="java.lang.Boolean"/>
+	<field name="consegna" class="java.lang.String"/>
+	<field name="stampa_riga_aggiuntiva" class="java.lang.Boolean"/>
+	<field name="is_descrizione" class="java.lang.Boolean"/>
+	<field name="piva_cfiscale_desc_2_sotto" class="java.lang.String"/>
+	<field name="recapito_2_sotto" class="java.lang.String"/>
+	<field name="int_dest_1" class="java.lang.String"/>
+	<field name="int_dest_2" class="java.lang.String"/>
+	<variable name="CURRENT_PAGE" class="java.lang.Integer" resetType="Page">
+		<variableExpression><![CDATA[$V{PAGE_NUMBER}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_PAGE" class="java.lang.Integer" incrementType="Report">
+		<variableExpression><![CDATA[$V{PAGE_NUMBER}]]></variableExpression>
+	</variable>
+	<background>
+		<band height="842">
+			<image scaleImage="FillFrame" hAlign="Left" vAlign="Top" isUsingCache="true">
+				<reportElement key="image-2" mode="Opaque" x="0" y="0" width="595" height="842" forecolor="#99FF99" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid"/>
+				<imageExpression class="java.io.InputStream"><![CDATA[$F{file_sfondo_input}]]></imageExpression>
+			</image>
+			<line>
+				<reportElement key="line-69" stretchType="RelativeToBandHeight" mode="Opaque" x="32" y="224" width="1" height="562" isPrintWhenDetailOverflows="true" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-70" stretchType="RelativeToBandHeight" mode="Opaque" x="557" y="224" width="1" height="562" isPrintWhenDetailOverflows="true" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+		</band>
+	</background>
+	<title>
+		<band/>
+	</title>
+	<pageHeader>
+		<band height="337">
+			<line>
+				<reportElement key="line-74" mode="Transparent" x="0" y="0" width="526" height="1" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField-2" style="variabili_testa_1" mode="Transparent" x="176" y="228" width="54" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<font size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{numero_fattura}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="false">
+				<reportElement key="textField-3" style="variabili_testa_1" mode="Transparent" x="271" y="228" width="74" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{data}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-12" mode="Transparent" x="231" y="225" width="1" height="20" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-13" mode="Transparent" x="269" y="225" width="1" height="20" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-14" mode="Transparent" x="341" y="225" width="1" height="20" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-54" mode="Transparent" x="32" y="245" width="525" height="1" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-74" mode="Transparent" x="32" y="224" width="526" height="1" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement key="textField-77" style="variabili_testa_1" mode="Transparent" x="38" y="148" width="249" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{intestazione1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement key="textField-78" style="variabili_testa_1" mode="Transparent" x="38" y="160" width="249" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{intestazione2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement key="textField-79" style="variabili_testa_1" mode="Transparent" x="38" y="172" width="249" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{intestazione3}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement key="textField-80" style="variabili_testa_1" mode="Transparent" x="38" y="184" width="249" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{intestazione4}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement key="textField-81" style="variabili_testa_1" mode="Transparent" x="38" y="196" width="249" height="11" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{intestazione5}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement key="textField-82" style="variabili_testa_1" mode="Transparent" x="38" y="207" width="249" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{intestazione6}]]></textFieldExpression>
+			</textField>
+			<rectangle radius="3">
+				<reportElement key="rectangle-1" mode="Transparent" x="298" y="20" width="264" height="91" forecolor="#CCCCCC" backcolor="#FFFFFF">
+					<printWhenExpression><![CDATA[$F{stampa_dest_div}]]></printWhenExpression>
+				</reportElement>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-23" mode="Transparent" x="298" y="115" width="264" height="90" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField-130" style="variabili_testa_1" mode="Transparent" x="302" y="117" width="235" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<font size="9" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{etichetta_int2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField-131" style="variabili_testa_1" mode="Transparent" x="302" y="22" width="235" height="12" forecolor="#000000" backcolor="#FFFFFF">
+					<printWhenExpression><![CDATA[$F{stampa_dest_div}]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<font size="9" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{etichetta_int1}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-13" mode="Transparent" x="172" y="225" width="1" height="20" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="314" y="33" width="246" height="77"/>
+				<textElement verticalAlignment="Middle" markup="html"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{int_dest_1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField-11" style="variabili_testa_1" mode="Transparent" x="345" y="230" width="214" height="12" forecolor="#000000" backcolor="#FFFFFF">
+					<printWhenExpression><![CDATA[$P{stampaPivaSotto}]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single" markup="html">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{piva_cfiscale_desc_2_sotto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="314" y="128" width="246" height="77"/>
+				<textElement verticalAlignment="Middle" markup="html"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{int_dest_2}]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement positionType="Float" x="25" y="262" width="539" height="45" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[new Boolean(($F{s_banca_sede} != null && $F{s_banca_sede}.length() > 0) || ($F{s_banca_agenzia} != null && $F{s_banca_agenzia}.length() > 0))]]></printWhenExpression>
+				</reportElement>
+				<textField pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-17" style="variabili_testa_1" mode="Transparent" x="124" y="16" width="406" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{s_banca_agenzia}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement key="line-55" stretchType="RelativeToBandHeight" mode="Transparent" x="7" y="0" width="525" height="1" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+					<graphicElement fill="Solid">
+						<pen lineWidth="0.5" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<textField pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-12" style="variabili_testa_1" mode="Transparent" x="124" y="2" width="406" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{s_banca_sede}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement key="line-13" mode="Transparent" x="120" y="0" width="1" height="45" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+					<graphicElement fill="Solid">
+						<pen lineWidth="0.5" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<textField>
+					<reportElement key="staticText-14" style="etichette_testa_1" x="10" y="2" width="108" height="12"/>
+					<textElement textAlignment="Right">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{e_banca_appoggio}]]></textFieldExpression>
+				</textField>
+				<textField pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-17" style="variabili_testa_1" mode="Transparent" x="124" y="28" width="187" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{s_banca_iban}]]></textFieldExpression>
+				</textField>
+				<textField pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-17" style="variabili_testa_1" mode="Transparent" x="316" y="28" width="212" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{s_banca_swift}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="25" y="246" width="545" height="16"/>
+				<textField>
+					<reportElement key="staticText-13" style="etichette_testa_1" x="10" y="2" width="108" height="12"/>
+					<textElement textAlignment="Right">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{e_Pagamento}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-11" style="variabili_testa_1" mode="Transparent" x="124" y="2" width="405" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{pagamento} + " " + $F{note_pagamento}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement key="line-13" stretchType="RelativeToBandHeight" mode="Transparent" x="120" y="0" width="1" height="16" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+					<graphicElement fill="Solid">
+						<pen lineWidth="0.5" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="25" y="307" width="545" height="16"/>
+				<textField>
+					<reportElement key="staticText-37" style="etichette_testa_1" x="10" y="2" width="108" height="12"/>
+					<textElement textAlignment="Right">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{e_note}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-73" style="variabili_testa_1" mode="Transparent" x="124" y="3" width="405" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single" markup="html"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{note}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement key="line-13" stretchType="RelativeToBandHeight" mode="Transparent" x="120" y="0" width="1" height="16" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+					<graphicElement fill="Solid">
+						<pen lineWidth="0.5" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-57" mode="Transparent" x="7" y="0" width="525" height="1" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+					<graphicElement fill="Solid">
+						<pen lineWidth="0.5" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-57" mode="Transparent" x="8" y="15" width="525" height="1" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+					<graphicElement fill="Solid">
+						<pen lineWidth="0.5" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+			</frame>
+			<textField>
+				<reportElement key="staticText-7" style="etichette_testa_1" x="232" y="228" width="36" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{e_DATA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="228" width="170" height="15">
+					<printWhenExpression><![CDATA[new Boolean($F{stato_ordine}.toLowerCase().indexOf("prev") >= 0)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{e_PREVENTIVO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="228" width="171" height="15">
+					<printWhenExpression><![CDATA[new Boolean($F{stato_ordine}.toLowerCase().indexOf("prev") < 0 && $F{stato_ordine}.toLowerCase().indexOf("conferma d'") < 0)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{e_ORDINE}]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement positionType="Float" x="25" y="321" width="532" height="16"/>
+				<textField>
+					<reportElement key="staticText-8" style="etichette_testa_1" x="11" y="3" width="57" height="12"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{e_corpo.codice}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement key="staticText-9" style="etichette_testa_1" x="73" y="3" width="189" height="12"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{e_Descrizione}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement key="staticText-10" style="etichette_testa_1" x="288" y="3" width="24" height="12"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{e_u.m.}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement key="staticText-11" style="etichette_testa_1" x="311" y="3" width="44" height="12"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="9" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{e_quantita}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement key="staticText-12" style="etichette_testa_1" x="355" y="3" width="54" height="12"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="9" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{e_prezzo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement key="staticText-11" style="etichette_testa_1" x="411" y="3" width="45" height="12"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="9" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{e_Sconti}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement key="staticText-11" style="etichette_testa_1" x="457" y="3" width="53" height="12"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="9" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{e_Importo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement key="staticText-11" style="etichette_testa_1" x="512" y="3" width="19" height="12"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{e_Iva}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement key="staticText-10" style="etichette_testa_1" x="264" y="3" width="24" height="12"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{e_pos_mag}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField>
+				<reportElement x="0" y="228" width="169" height="15">
+					<printWhenExpression><![CDATA[new Boolean($F{stato_ordine}.indexOf("Prev") < 0 && $F{stato_ordine}.indexOf("Conferma d'") >= 0)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{e_CONFERMA_ORDINE}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-74" mode="Transparent" x="32" y="336" width="526" height="1" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<image scaleImage="RetainShape" hAlign="Left" vAlign="Bottom" isUsingCache="true" onErrorType="Blank">
+				<reportElement key="image-1" mode="Transparent" x="27" y="24" width="256" height="113" forecolor="#99FF99" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+				<imageExpression class="java.io.InputStream"><![CDATA[$F{file_logo_input}]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="17" splitType="Prevent">
+			<frame>
+				<reportElement key="frameDescrizione" x="33" y="0" width="525" height="17">
+					<printWhenExpression><![CDATA[$F{is_descrizione}]]></printWhenExpression>
+				</reportElement>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-5" style="variabili_corpo_1" mode="Transparent" x="1" y="2" width="520" height="12" forecolor="#000000" backcolor="#FFFFFF">
+						<printWhenExpression><![CDATA[new Boolean($F{codice_articolo}.indexOf("##SUBTOTALE##") < 0)]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{descrizione}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-5" style="variabili_corpo_1" mode="Transparent" x="1" y="3" width="520" height="12" forecolor="#000000" backcolor="#FFFFFF">
+						<printWhenExpression><![CDATA[new Boolean($F{codice_articolo}.indexOf("##SUBTOTALE##") >= 0)]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{descrizione}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement key="line-60" positionType="FixRelativeToBottom" mode="Transparent" x="0" y="16" width="525" height="1" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+					<graphicElement fill="Solid">
+						<pen lineWidth="0.5" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+			</frame>
+			<frame>
+				<reportElement key="frameStandard" x="33" y="0" width="525" height="17">
+					<printWhenExpression><![CDATA[new Boolean($F{is_descrizione}.booleanValue() != true)]]></printWhenExpression>
+				</reportElement>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-4" style="variabili_corpo_1" mode="Transparent" x="2" y="2" width="56" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{codice_articolo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-5" style="variabili_corpo_1" mode="Transparent" x="64" y="2" width="214" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{descrizione}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-6" style="variabili_corpo_1" mode="Transparent" x="282" y="2" width="21" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{um}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-7" style="variabili_corpo_1" mode="Transparent" x="304" y="2" width="43" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{s_quantita}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-8" style="variabili_corpo_1" mode="Transparent" x="348" y="2" width="53" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{s_prezzo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-9" style="variabili_corpo_1" mode="Transparent" x="403" y="2" width="46" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{sconti}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-10" style="variabili_corpo_1" mode="Transparent" x="450" y="2" width="53" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{s_importo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-8" style="variabili_corpo_1" mode="Transparent" x="506" y="2" width="17" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{s_iva}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement key="line-60" positionType="FixRelativeToBottom" mode="Transparent" x="0" y="16" width="525" height="1" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+					<graphicElement fill="Solid">
+						<pen lineWidth="0.5" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-59" stretchType="RelativeToBandHeight" mode="Transparent" x="60" y="0" width="1" height="16" isPrintWhenDetailOverflows="true" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+					<graphicElement fill="Solid">
+						<pen lineWidth="0.5" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-62" stretchType="RelativeToBandHeight" mode="Transparent" x="280" y="1" width="1" height="16" isPrintWhenDetailOverflows="true" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+					<graphicElement fill="Solid">
+						<pen lineWidth="0.5" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-63" stretchType="RelativeToBandHeight" mode="Transparent" x="303" y="0" width="1" height="16" isPrintWhenDetailOverflows="true" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+					<graphicElement fill="Solid">
+						<pen lineWidth="0.5" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-64" stretchType="RelativeToBandHeight" mode="Transparent" x="347" y="0" width="1" height="16" isPrintWhenDetailOverflows="true" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+					<graphicElement fill="Solid">
+						<pen lineWidth="0.5" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-65" stretchType="RelativeToBandHeight" mode="Transparent" x="402" y="0" width="1" height="16" isPrintWhenDetailOverflows="true" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+					<graphicElement fill="Solid">
+						<pen lineWidth="0.5" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-66" stretchType="RelativeToBandHeight" mode="Transparent" x="449" y="0" width="1" height="16" isPrintWhenDetailOverflows="true" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+					<graphicElement fill="Solid">
+						<pen lineWidth="0.5" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-67" stretchType="RelativeToBandHeight" mode="Transparent" x="505" y="0" width="1" height="16" isPrintWhenDetailOverflows="true" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+					<graphicElement fill="Solid">
+						<pen lineWidth="0.5" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-6" style="variabili_corpo_1" mode="Transparent" x="258" y="2" width="21" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{pos_mag}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="63">
+			<staticText>
+				<reportElement key="staticText-38" mode="Transparent" x="348" y="28" width="210" height="8" forecolor="#999999" backcolor="#FFFFFF">
+					<printWhenExpression><![CDATA[$F{stampa_riga_aggiuntiva}]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<font fontName="SansSerif" size="6" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[printed with Invoicex / stampato con Invoicex / www.tnx.it]]></text>
+			</staticText>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+				<reportElement key="textField-74" style="etichette_piede_1" mode="Transparent" x="543" y="25" width="10" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField-75" style="etichette_piede_1" mode="Transparent" x="508" y="25" width="34" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Pag. " + String.valueOf($V{PAGE_NUMBER}) + "/"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-80" stretchType="RelativeToBandHeight" mode="Transparent" x="33" y="25" width="525" height="1" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-81" stretchType="RelativeToBandHeight" mode="Transparent" x="32" y="15" width="1" height="25" isPrintWhenDetailOverflows="true" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-82" stretchType="RelativeToBandHeight" mode="Transparent" x="557" y="15" width="1" height="25" isPrintWhenDetailOverflows="true" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement key="staticText-39" style="etichette_piede_1" x="39" y="24" width="460" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{e_continua}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="197">
+			<staticText>
+				<reportElement key="staticText-5" mode="Transparent" x="348" y="152" width="210" height="8" forecolor="#999999" backcolor="#FFFFFF">
+					<printWhenExpression><![CDATA[$F{stampa_riga_aggiuntiva}]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<font fontName="SansSerif" size="6" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[printed with Invoicex / stampato con Invoicex / www.tnx.it]]></text>
+			</staticText>
+			<rectangle radius="0">
+				<reportElement key="rectangle-21" mode="Opaque" x="369" y="94" width="187" height="17" forecolor="#CCCCCC" backcolor="#FFFFCC"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField-35" style="variabili_piede_1" mode="Transparent" x="33" y="5" width="522" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{messaggio}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-27" stretchType="RelativeToBandHeight" mode="Transparent" x="280" y="37" width="1" height="14" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-28" stretchType="RelativeToBandHeight" mode="Transparent" x="368" y="37" width="1" height="14" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+				<reportElement key="textField-36" style="variabili_piede_1" mode="Transparent" x="370" y="38" width="45" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{s_spese_trasporto}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-29" stretchType="RelativeToBandHeight" mode="Transparent" x="418" y="37" width="1" height="14" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+				<reportElement key="textField-37" style="variabili_piede_1" mode="Transparent" x="509" y="38" width="45" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{s_spese_incasso}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-30" stretchType="RelativeToBandHeight" mode="Transparent" x="506" y="37" width="1" height="14" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-31" stretchType="RelativeToBandHeight" mode="Transparent" x="368" y="51" width="1" height="61" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-32" mode="Transparent" x="32" y="77" width="335" height="1" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-33" mode="Transparent" x="32" y="65" width="526" height="1" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-34" mode="Transparent" x="32" y="51" width="526" height="1" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-35" mode="Transparent" x="32" y="112" width="525" height="1" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+				<reportElement key="textField-53" style="variabili_piede_1" mode="Transparent" x="466" y="68" width="87" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<font size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{s_totale_imponibile}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+				<reportElement key="textField-54" style="variabili_piede_1" mode="Transparent" x="466" y="82" width="87" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<font size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{s_totale_iva}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+				<reportElement key="textField-55" style="variabili_piede_1" mode="Transparent" x="466" y="95" width="87" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<font size="11" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{s_totale}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField-71" style="etichette_piede_1" mode="Transparent" x="508" y="133" width="34" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Pag. " + String.valueOf($V{PAGE_NUMBER}) + "/"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+				<reportElement key="textField-72" style="etichette_piede_1" mode="Transparent" x="543" y="133" width="10" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+				<reportElement key="textField-76" style="variabili_piede_1" mode="Transparent" x="122" y="38" width="153" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{s_sconti}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-71" stretchType="RelativeToBandHeight" mode="Transparent" x="119" y="37" width="1" height="14" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-76" stretchType="RelativeToBandHeight" mode="Transparent" x="32" y="0" width="1" height="149" isPrintWhenDetailOverflows="true" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-77" stretchType="RelativeToBandHeight" mode="Transparent" x="32" y="36" width="525" height="1" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-78" stretchType="RelativeToBandHeight" mode="Transparent" x="32" y="148" width="526" height="1" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-79" stretchType="RelativeToBandHeight" mode="Transparent" x="557" y="0" width="1" height="149" isPrintWhenDetailOverflows="true" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<frame>
+				<reportElement key="fp1" positionType="Float" x="35" y="77" width="330" height="9"/>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-157" style="variabili_piede_1" mode="Transparent" x="276" y="0" width="49" height="9" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font size="7" isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{iva_imposta_1}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-149" style="variabili_piede_1" mode="Transparent" x="175" y="0" width="48" height="9" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font size="7" isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{iva_imp_1}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-145" style="variabili_piede_1" mode="Transparent" x="32" y="0" width="142" height="9" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font size="7" isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{iva_desc_1}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-141" style="variabili_piede_1" mode="Transparent" x="1" y="0" width="29" height="9" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font size="7" isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{iva_codice_1}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-156" style="variabili_piede_1" mode="Transparent" x="227" y="0" width="35" height="9" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font size="7" isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{iva_perc_1}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement key="fp2" positionType="Float" x="35" y="86" width="330" height="9"/>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-150" style="variabili_piede_1" mode="Transparent" x="175" y="0" width="48" height="9" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font size="7" isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{iva_imp_2}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-158" style="variabili_piede_1" mode="Transparent" x="276" y="0" width="49" height="9" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font size="7" isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{iva_imposta_2}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-146" style="variabili_piede_1" mode="Transparent" x="32" y="0" width="142" height="9" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font size="7" isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{iva_desc_2}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-155" style="variabili_piede_1" mode="Transparent" x="227" y="0" width="35" height="9" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font size="7" isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{iva_perc_2}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-142" style="variabili_piede_1" mode="Transparent" x="1" y="0" width="29" height="9" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font size="7" isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{iva_codice_2}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="35" y="95" width="330" height="9"/>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-143" style="variabili_piede_1" mode="Transparent" x="1" y="0" width="29" height="9" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font size="7" isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{iva_codice_3}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-147" style="variabili_piede_1" mode="Transparent" x="32" y="0" width="142" height="9" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font size="7" isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{iva_desc_3}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-151" style="variabili_piede_1" mode="Transparent" x="175" y="0" width="48" height="9" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font size="7" isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{iva_imp_3}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-154" style="variabili_piede_1" mode="Transparent" x="227" y="0" width="35" height="9" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font size="7" isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{iva_perc_3}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-159" style="variabili_piede_1" mode="Transparent" x="276" y="0" width="49" height="9" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font size="7" isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{iva_imposta_3}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="35" y="104" width="330" height="9"/>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-148" style="variabili_piede_1" mode="Transparent" x="32" y="0" width="142" height="9" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font size="7" isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{iva_desc_4}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-160" style="variabili_piede_1" mode="Transparent" x="276" y="0" width="49" height="9" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font size="7" isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{iva_imposta_4}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-144" style="variabili_piede_1" mode="Transparent" x="1" y="0" width="29" height="9" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font size="7" isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{iva_codice_4}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-153" style="variabili_piede_1" mode="Transparent" x="227" y="0" width="35" height="9" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font size="7" isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{iva_perc_4}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-152" style="variabili_piede_1" mode="Transparent" x="175" y="0" width="48" height="9" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font size="7" isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{iva_imp_4}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<line>
+				<reportElement key="line-27" stretchType="RelativeToBandHeight" mode="Transparent" x="280" y="22" width="1" height="14" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement key="textField-36" style="variabili_piede_1" mode="Transparent" x="371" y="23" width="183" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{consegna}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-77" stretchType="RelativeToBandHeight" mode="Transparent" x="32" y="21" width="525" height="1" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-28" stretchType="RelativeToBandHeight" mode="Transparent" x="368" y="22" width="1" height="14" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-71" stretchType="RelativeToBandHeight" mode="Transparent" x="119" y="22" width="1" height="14" forecolor="#CCCCCC" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement key="textField-76" style="variabili_piede_1" mode="Transparent" x="122" y="23" width="153" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{riferimento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="35" y="23" width="81" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{e_Vostro_riferimento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="staticText-23" style="etichette_piede_1" x="283" y="23" width="82" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{e_Consegna}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="staticText-40" style="etichette_piede_1" x="34" y="38" width="82" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{e_Sconti}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="staticText-23" style="etichette_piede_1" x="283" y="38" width="82" height="12"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{e_Spese_di_trasporto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="staticText-24" style="etichette_piede_1" x="421" y="38" width="82" height="12"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{e_Spese_di_incasso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="staticText-25" style="etichette_piede_1" x="34" y="52" width="331" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{e_DettaglioIVA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="staticText-26" style="etichette_piede_1" x="34" y="66" width="29" height="11"/>
+				<textElement verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{e_Codice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="staticText-27" style="etichette_piede_1" x="65" y="66" width="128" height="11"/>
+				<textElement verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{e_Descrizione}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="staticText-28" style="etichette_piede_1" x="195" y="66" width="63" height="11"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{e_Imponibile}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="staticText-30" style="etichette_piede_1" x="300" y="66" width="63" height="11"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{e_Imposta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="staticText-29" style="etichette_piede_1" x="261" y="66" width="36" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{e_%_IVA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="staticText-31" style="etichette_piede_1" x="372" y="68" width="90" height="13"/>
+				<textElement textAlignment="Right">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{e_TOTALE_IMPONIBILE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="staticText-32" style="etichette_piede_1" x="372" y="81" width="90" height="13"/>
+				<textElement textAlignment="Right">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{e_TOTALE_IVA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="staticText-33" style="etichette_piede_1" x="372" y="95" width="90" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{e_TOTALE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band height="100">
+			<printWhenExpression><![CDATA[new Boolean($P{timbro_e_firma}.length() > 0)]]></printWhenExpression>
+			<textField>
+				<reportElement x="38" y="6" width="514" height="88"/>
+				<box>
+					<pen lineStyle="Dotted"/>
+					<topPen lineWidth="0.5" lineStyle="Dotted"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{timbro_e_firma}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

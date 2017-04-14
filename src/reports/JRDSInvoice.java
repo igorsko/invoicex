@@ -981,7 +981,6 @@ public class JRDSInvoice extends JRDSBase
                 return banca_iban;
 
             }  else if (jRField.getName().equalsIgnoreCase("s_banca_swift")) {
-                System.out.println("swift: "+banca_SWIFT);
                 return banca_SWIFT;
 
             } else if (jRField.getName().equalsIgnoreCase("s_spese_trasporto")) {

@@ -209,6 +209,7 @@ public class JRDSOrdine extends JRDSBase implements net.sf.jasperreports.engine.
             banca_solo_sede = "";
             banca_agenzia = "";
             banca_iban = "";
+            banca_SWIFT = "";
             rDocu.next();
 
             Preferences preferences = java.util.prefs.Preferences.userNodeForPackage(main.class);
@@ -277,6 +278,10 @@ public class JRDSOrdine extends JRDSBase implements net.sf.jasperreports.engine.
 
             if (rDocu.getString("t.banca_iban") != null && rDocu.getString("t.banca_iban").length() > 0) {
                 banca_iban = "IBAN " + rDocu.getString("t.banca_iban");
+            }
+
+            if (rDocu.getString("t.swift") != null && rDocu.getString("t.swift").length() > 0) {
+                banca_SWIFT = "SWIFT " + rDocu.getString("t.swift");
             }
 
             //dati per dest diversa
@@ -866,13 +871,10 @@ public class JRDSOrdine extends JRDSBase implements net.sf.jasperreports.engine.
 
                 return banca_agenzia;
             } else if (jRField.getName().equalsIgnoreCase("s_banca_iban")) {
-                   System.out.println("44444444444JRRRRRRRRR iban");
-
                 return banca_iban;
 
             }  else if (jRField.getName().equalsIgnoreCase("s_banca_swift")) {
-                   System.out.println("44444444444444JRRRRRRRRR swift");
-                return "swift";
+                return banca_SWIFT;
 
             }  else if (jRField.getName().equalsIgnoreCase("s_spese_trasporto")) {
 
